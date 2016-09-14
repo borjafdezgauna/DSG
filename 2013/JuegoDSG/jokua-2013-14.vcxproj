@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A90E493B-D22B-4FAF-A7AF-8C71287F7DE4}</ProjectGuid>
+    <RootNamespace>jokua201314</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>2013-Maze</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\DSG\Simple OpenGL Image Library\src;D:\DSG\packages\nupengl.core.0.1.0.1\build\native\include\GL;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\DSG\Debug;D:\DSG\packages\nupengl.core.0.1.0.1\build\native\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Camara.cpp" />
+    <ClCompile Include="src\Escenario.cpp" />
+    <ClCompile Include="src\Fantasma.cpp" />
+    <ClCompile Include="src\FrameRate.cpp" />
+    <ClCompile Include="src\Iluminacion.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Personaje.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="src\Group.cpp" />
+    <ClCompile Include="src\Material.cpp" />
+    <ClCompile Include="src\MaterialParser.cpp" />
+    <ClCompile Include="src\MaterialTexture.cpp" />
+    <ClCompile Include="src\ObjModel.cpp" />
+    <ClCompile Include="src\ObjParser.cpp" />
+    <ClCompile Include="src\Parser.cpp" />
+    <ClCompile Include="src\Point3.cpp" />
+    <ClCompile Include="src\ReflectionTexture.cpp" />
+    <ClCompile Include="src\SmoothGroup.cpp" />
+    <ClCompile Include="src\Statement.cpp" />
+    <ClCompile Include="src\Triangle.cpp" />
+    <ClCompile Include="src\Vertex.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\Camara.h" />
+    <ClInclude Include="inc\Escenario.h" />
+    <ClInclude Include="inc\Fantasma.h" />
+    <ClInclude Include="inc\FrameRate.h" />
+    <ClInclude Include="inc\Iluminacion.h" />
+    <ClInclude Include="inc\Personaje.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="inc\BlockArray.h" />
+    <ClInclude Include="inc\FitArray.h" />
+    <ClInclude Include="inc\FixedArray.h" />
+    <ClInclude Include="inc\Group.h" />
+    <ClInclude Include="inc\Material.h" />
+    <ClInclude Include="inc\MaterialParser.h" />
+    <ClInclude Include="inc\MaterialTexture.h" />
+    <ClInclude Include="inc\ObjModel.h" />
+    <ClInclude Include="inc\ObjParser.h" />
+    <ClInclude Include="inc\Parser.h" />
+    <ClInclude Include="inc\Point3.h" />
+    <ClInclude Include="inc\ReflectionTexture.h" />
+    <ClInclude Include="inc\SmoothGroup.h" />
+    <ClInclude Include="inc\Statement.h" />
+    <ClInclude Include="inc\targetver.h" />
+    <ClInclude Include="inc\Triangle.h" />
+    <ClInclude Include="inc\Vertex.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

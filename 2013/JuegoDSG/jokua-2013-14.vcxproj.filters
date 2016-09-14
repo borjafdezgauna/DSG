@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{57d6406c-cb8e-41be-a02b-d8a3e7dac17b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{c6c8bf65-7a35-41a1-9f2a-a2617059162f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjParser">
+      <UniqueIdentifier>{ab62840b-76f8-452b-9ee0-477247fc2f38}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Camara.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Escenario.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fantasma.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FrameRate.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Iluminacion.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Personaje.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Group.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Material.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MaterialParser.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MaterialTexture.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ObjModel.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ObjParser.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parser.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Point3.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ReflectionTexture.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SmoothGroup.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Statement.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Triangle.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vertex.cpp">
+      <Filter>ObjParser</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\Camara.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Escenario.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Fantasma.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\FrameRate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Iluminacion.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Personaje.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\BlockArray.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\FitArray.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\FixedArray.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Group.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Material.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\MaterialParser.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\MaterialTexture.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ObjModel.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ObjParser.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Parser.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Point3.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\ReflectionTexture.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\SmoothGroup.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Statement.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\targetver.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Triangle.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Vertex.h">
+      <Filter>ObjParser</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -238,3 +238,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 /temp
+/2012/OBJ-model-viewer
+/2014
+/2015/Genocide-UE4
+/DSG.VC.db
+/DSG.VC.VC.opendb
