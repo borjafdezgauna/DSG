@@ -5,7 +5,6 @@
  *      Author: dowdyph0
  */
 #include "../stdafx.h"
-#include <SOIL.h>
 
 
 #include "../inc/Escenario.h"
