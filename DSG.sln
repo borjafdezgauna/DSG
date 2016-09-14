@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SOIL", "Simple OpenGL Image
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2013-Maze", "2013\JuegoDSG\jokua-2013-14.vcxproj", "{A90E493B-D22B-4FAF-A7AF-8C71287F7DE4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL-base", "OpenGL-base\Lab1.vcxproj", "{A1629DD3-6274-42FD-8F6D-75918D1BB1EC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL-shaders", "OpenGL-shaders\Shaders.vcxproj", "{F8263294-22B7-45C1-BA7D-6B22144AF41D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -37,6 +41,18 @@ Global
 		{A90E493B-D22B-4FAF-A7AF-8C71287F7DE4}.Release|Win32.ActiveCfg = Release|Win32
 		{A90E493B-D22B-4FAF-A7AF-8C71287F7DE4}.Release|Win32.Build.0 = Release|Win32
 		{A90E493B-D22B-4FAF-A7AF-8C71287F7DE4}.Release|x64.ActiveCfg = Release|Win32
+		{A1629DD3-6274-42FD-8F6D-75918D1BB1EC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A1629DD3-6274-42FD-8F6D-75918D1BB1EC}.Debug|Win32.Build.0 = Debug|Win32
+		{A1629DD3-6274-42FD-8F6D-75918D1BB1EC}.Debug|x64.ActiveCfg = Debug|Win32
+		{A1629DD3-6274-42FD-8F6D-75918D1BB1EC}.Release|Win32.ActiveCfg = Release|Win32
+		{A1629DD3-6274-42FD-8F6D-75918D1BB1EC}.Release|Win32.Build.0 = Release|Win32
+		{A1629DD3-6274-42FD-8F6D-75918D1BB1EC}.Release|x64.ActiveCfg = Release|Win32
+		{F8263294-22B7-45C1-BA7D-6B22144AF41D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F8263294-22B7-45C1-BA7D-6B22144AF41D}.Debug|Win32.Build.0 = Debug|Win32
+		{F8263294-22B7-45C1-BA7D-6B22144AF41D}.Debug|x64.ActiveCfg = Debug|Win32
+		{F8263294-22B7-45C1-BA7D-6B22144AF41D}.Release|Win32.ActiveCfg = Release|Win32
+		{F8263294-22B7-45C1-BA7D-6B22144AF41D}.Release|Win32.Build.0 = Release|Win32
+		{F8263294-22B7-45C1-BA7D-6B22144AF41D}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
