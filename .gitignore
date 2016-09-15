@@ -11,9 +11,9 @@
 
 
 # Build results
-[Dd]ebug/*
+[Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/*
+[Rr]elease/
 [Rr]eleases/
 
 x64/
@@ -43,6 +43,7 @@ TestResult.xml
 [Rr]eleasePS/
 dlldata.c
 
+*.tlog
 *_i.c
 *_p.c
 *_i.h
