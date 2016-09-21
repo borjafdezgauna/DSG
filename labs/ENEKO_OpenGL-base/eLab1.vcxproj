@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>OpenGL-base</ProjectName>
-    <ProjectGuid>{A1629DD3-6274-42FD-8F6D-75918D1BB1EC}</ProjectGuid>
+    <ProjectGuid>{8BA2F0EE-56E0-405B-A204-646EC2072E0E}</ProjectGuid>
     <RootNamespace>Test1</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
