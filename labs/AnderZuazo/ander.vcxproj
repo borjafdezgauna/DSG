@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>OpenGL-base</ProjectName>
+    <ProjectName>Ander</ProjectName>
     <ProjectGuid>{37EE1DBB-857B-4F19-BFBC-46E439A7ABC1}</ProjectGuid>
     <RootNamespace>Test1</RootNamespace>
     <Keyword>Win32Proj</Keyword>
