@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL-base", "OpenGL-base\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL-shaders", "OpenGL-shaders\Shaders.vcxproj", "{F8263294-22B7-45C1-BA7D-6B22144AF41D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL-base_Asierro", "labs\asierrodriguez-base\Lab1_asierro.vcxproj", "{1729ED14-0D2C-41ED-9558-47DFB529883C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -53,6 +55,12 @@ Global
 		{F8263294-22B7-45C1-BA7D-6B22144AF41D}.Release|Win32.ActiveCfg = Release|Win32
 		{F8263294-22B7-45C1-BA7D-6B22144AF41D}.Release|Win32.Build.0 = Release|Win32
 		{F8263294-22B7-45C1-BA7D-6B22144AF41D}.Release|x64.ActiveCfg = Release|Win32
+		{1729ED14-0D2C-41ED-9558-47DFB529883C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1729ED14-0D2C-41ED-9558-47DFB529883C}.Debug|Win32.Build.0 = Debug|Win32
+		{1729ED14-0D2C-41ED-9558-47DFB529883C}.Debug|x64.ActiveCfg = Debug|Win32
+		{1729ED14-0D2C-41ED-9558-47DFB529883C}.Release|Win32.ActiveCfg = Release|Win32
+		{1729ED14-0D2C-41ED-9558-47DFB529883C}.Release|Win32.Build.0 = Release|Win32
+		{1729ED14-0D2C-41ED-9558-47DFB529883C}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
