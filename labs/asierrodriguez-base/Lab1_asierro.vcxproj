@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>OpenGL-base_Asierro</ProjectName>
+    <ProjectName>AsierRo</ProjectName>
     <ProjectGuid>{1729ED14-0D2C-41ED-9558-47DFB529883C}</ProjectGuid>
     <RootNamespace>Test1</RootNamespace>
     <Keyword>Win32Proj</Keyword>

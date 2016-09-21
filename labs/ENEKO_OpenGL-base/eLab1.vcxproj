@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>OpenGL-base</ProjectName>
+    <ProjectName>Eneko</ProjectName>
     <ProjectGuid>{8BA2F0EE-56E0-405B-A204-646EC2072E0E}</ProjectGuid>
     <RootNamespace>Test1</RootNamespace>
     <Keyword>Win32Proj</Keyword>
