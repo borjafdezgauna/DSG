@@ -17,5 +17,5 @@
 #include <GL/glu.h>
 
 //FreeGLUT includes
-#include "../packages/nupengl.core.0.1.0.1/build/native/include/GL/glut.h"
-#include "../packages/nupengl.core.0.1.0.1/build/native/include/GL/freeglut.h"
+#include "../../packages/nupengl.core.0.1.0.1/build/native/include/GL/glut.h"
+#include "../../packages/nupengl.core.0.1.0.1/build/native/include/GL/freeglut.h"
