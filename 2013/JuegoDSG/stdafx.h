@@ -23,10 +23,10 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-//FreeGLUT includes
+//FreeGLUT
 #include "../../packages/nupengl.core.0.1.0.1/build/native/include/GL/glut.h"
 #include "../../packages/nupengl.core.0.1.0.1/build/native/include/GL/freeglut_ext.h"
-
+//SOIL
 #include "../../Simple OpenGL Image Library/src/SOIL.h"
 #pragma comment(lib,"../../Debug/SOIL.lib")
 #pragma comment(lib,"../../packages/nupengl.core.0.1.0.1/build/native/lib/Win32/freeglut.lib")
