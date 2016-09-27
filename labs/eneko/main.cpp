@@ -2,10 +2,11 @@
 //
 
 #include "stdafx.h"
+#include "keyboard.h"
 
-#define MOVE_STEP .4
-#define ANGLE_STEP 0.2
-#define PI 3.1416f
+
+
+
 
 float g_x=0.0f;
 float g_y=0.0f;
@@ -19,20 +20,8 @@ float g_cubeAngle= 0.f;
 
 
 
-void Keyboard(unsigned char key,int x, int y)
-{
-	//keyboard callback function
-	switch (key)
-	{
-	case '8':	g_x-= MOVE_STEP*sin(g_yaw*PI/180);
-				g_z-= MOVE_STEP*cos(g_yaw*PI/180);break;
-	case '2':	g_x+= MOVE_STEP*sin(g_yaw*PI/180);
-				g_z+= MOVE_STEP*cos(g_yaw*PI/180);break;
-	case '6': g_yaw-= ANGLE_STEP; break;
-	case '4': g_yaw+= ANGLE_STEP; break;
-	case 27: exit(0);
-	}
-}
+
+
 
 void Set3DView()
 {
@@ -63,6 +52,7 @@ void DrawCube()
 
 void DrawScene(void)
 {
+
 	//clean the backbuffer
 	glClear (GL_COLOR_BUFFER_BIT);
 
@@ -95,17 +85,20 @@ int main(int argc, char** argv)
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize (1024, 768); 
 	glutCreateWindow (argv[0]);
-	glutFullScreen();
+	//glutFullScreen();
 
 
 	//callback functions
 	glutDisplayFunc(DrawScene);
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
+	glutKeyboardUpFunc(pressKeyboard);
+	
+	glutSetKeyRepeat(false);
+	
 
-
-	while (1)
-	{
+	while (1){
+		//glutKeyboardFunc(moverTeclado);
 		//UPDATE////////////////////
 		////////////////////////////
 		//"move" the cube
@@ -120,4 +113,5 @@ int main(int argc, char** argv)
 		glutSwapBuffers();
 	}
    return 0;
+   
 }

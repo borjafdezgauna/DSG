@@ -5,6 +5,11 @@
 
 #pragma once
 
+extern int g_w;
+extern float g_z;
+extern float g_yaw;
+extern float g_x;
+
 #include "targetver.h"
 
 #include <stdio.h>
