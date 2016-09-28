@@ -14,18 +14,11 @@ void Keyboard(unsigned char key, int x, int y)
 	//keyboard callback function
 	switch (key)
 	{
-	case '8':	pulsa8 = true;
-		 break;
+	case '8':	pulsa8 = true; break;
 	case '2':	pulsa2 = true; break;
-		
-			
 	case '6': pulsa6 = true; break;
-		
-			
-
 	case '4':  pulsa4 = true; break;
 		
-			
 	case 27: exit(0);
 	}
 }
