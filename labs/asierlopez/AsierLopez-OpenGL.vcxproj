@@ -101,12 +101,14 @@
     <ClInclude Include="mouse.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TimeCounter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="TimeCounter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
