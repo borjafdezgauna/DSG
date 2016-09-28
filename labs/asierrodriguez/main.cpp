@@ -18,8 +18,6 @@ float g_cubeAngle= 0.f;
 
 
 
-
-
 void Set3DView()
 {
 	//set projection matrix
@@ -81,7 +79,7 @@ int main(int argc, char** argv)
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize (1024, 768); 
 	glutCreateWindow (argv[0]);
-	glutFullScreen();
+	//glutFullScreen();
 
 	//evitar repetición windows
 	glutSetKeyRepeat(false);
@@ -92,11 +90,20 @@ int main(int argc, char** argv)
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
 	glutKeyboardUpFunc(PressedKeyboard);
-	glutMouseFunc(OnMouseMovement);
+	glutMouseFunc(updateMouseUp);
+	glutMotionFunc(updateMouseAlways);
 
 	while (1)
 	{
 		updateMovement();
+		// con este va solo hacia un lado cuando pulsas hasta que sueltas
+		OnMouseMovement();
+
+
+		//con este gira cuando cambias el raton
+		mouseAlwaysMoving();
+
+
 		//UPDATE////////////////////
 		////////////////////////////
 		//"move" the cube
