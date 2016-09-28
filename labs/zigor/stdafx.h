@@ -26,3 +26,13 @@
 #include "../../Simple OpenGL Image Library/src/SOIL.h"
 #pragma comment(lib,"../../Debug/SOIL.lib")
 #pragma comment(lib,"../../packages/nupengl.core.0.1.0.1/build/native/lib/Win32/freeglut.lib")
+
+extern float g_x;
+extern float g_y;
+extern float g_z;
+extern float g_roll;
+extern float g_pitch;
+extern float g_yaw;
+extern int g_w;
+extern int g_h;
+extern float g_cubeAngle;

@@ -2,10 +2,8 @@
 //
 
 #include "stdafx.h"
-
-#define MOVE_STEP .4
-#define ANGLE_STEP 0.2
-#define PI 3.1416f
+#include "keyboard.h"
+#include "mouse.h"
 
 float g_x=0.0f;
 float g_y=0.0f;
@@ -17,22 +15,6 @@ int g_w;
 int g_h;
 float g_cubeAngle= 0.f;
 
-
-
-void Keyboard(unsigned char key,int x, int y)
-{
-	//keyboard callback function
-	switch (key)
-	{
-	case '8':	g_x-= MOVE_STEP*sin(g_yaw*PI/180);
-				g_z-= MOVE_STEP*cos(g_yaw*PI/180);break;
-	case '2':	g_x+= MOVE_STEP*sin(g_yaw*PI/180);
-				g_z+= MOVE_STEP*cos(g_yaw*PI/180);break;
-	case '6': g_yaw-= ANGLE_STEP; break;
-	case '4': g_yaw+= ANGLE_STEP; break;
-	case 27: exit(0);
-	}
-}
 
 void Set3DView()
 {
@@ -95,17 +77,28 @@ int main(int argc, char** argv)
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize (1024, 768); 
 	glutCreateWindow (argv[0]);
-	glutFullScreen();
+	//glutFullScreen();
+
+	//Evitar que windows use función de repetición
+	glutSetKeyRepeat(false);
 
 
 	//callback functions
 	glutDisplayFunc(DrawScene);
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
+	glutKeyboardUpFunc(upKeyboard);
+	glutMouseFunc(mouse);
+	glutMotionFunc(mouseMotion);
+
+
 
 
 	while (1)
 	{
+		ejecutarTeclado();
+		ejecutarRaton();
+
 		//UPDATE////////////////////
 		////////////////////////////
 		//"move" the cube
