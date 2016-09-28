@@ -77,7 +77,7 @@ int main(int argc, char** argv)
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize (1024, 768); 
 	glutCreateWindow (argv[0]);
-	glutFullScreen();
+	//glutFullScreen();
 
 	//Evitar que windows use función de repetición
 	glutSetKeyRepeat(false);
@@ -89,12 +89,15 @@ int main(int argc, char** argv)
 	glutKeyboardFunc(Keyboard);
 	glutKeyboardUpFunc(upKeyboard);
 	glutMouseFunc(mouse);
+	glutMotionFunc(mouseMotion);
+
 
 
 
 	while (1)
 	{
 		ejecutarTeclado();
+		ejecutarRaton();
 
 		//UPDATE////////////////////
 		////////////////////////////
