@@ -7,8 +7,10 @@
 
 extern int g_w;
 extern float g_z;
+extern int g_h;
 extern float g_yaw;
 extern float g_x;
+extern float g_pitch;
 
 #include "targetver.h"
 
