@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "Cube.h"
 
 
 float g_x=0.0f;
@@ -16,7 +17,8 @@ int g_w;
 int g_h;
 float g_cubeAngle= 0.f;
 
-
+//declaramos instancias de cubo
+Cube g_cubo1, g_cubo2;
 
 
 void Set3DView()
@@ -37,25 +39,29 @@ void Set3DView()
 
 
 
-void DrawCube()
-{
-	glColor3f (0.5, 1.0, 0.5);
-	glMatrixMode(GL_MODELVIEW);
-	
-	glRotatef(g_cubeAngle,1.0,0.0,0.0);
-	glutWireCube (1.0);
-}
+//void DrawCube()
+//{
+//	glColor3f (0.5, 1.0, 0.5);
+//	glMatrixMode(GL_MODELVIEW);
+//	
+//	glRotatef(g_cubeAngle,1.0,0.0,0.0);
+//	glutWireCube (1.0);
+//}
 
 void DrawScene(void)
 {
 	//clean the backbuffer
 	glClear (GL_COLOR_BUFFER_BIT);
 
+			//NOTA: si quisieramos vaciar el front bufer tambien
+			//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	//viewing transformation
 	Set3DView();
 
 	//draw the cube
-	DrawCube();
+	g_cubo1.draw();
+	g_cubo2.draw();
 
 }
 
@@ -72,6 +78,15 @@ void Reshape (int w, int h)
 
 int main(int argc, char** argv)
 {
+
+	g_cubo1.setPosition(0.0, 0.5, 0.0);
+	g_cubo1.setScale(0.5, 0.5, 0.5);
+	
+	g_cubo2.setPosition(0.0, 0.0, -3.0);
+	g_cubo2.setScale(2.0, 2.0, 2.0);
+
+	g_cubo1.setColor(1.0, 0.0, 0.0);
+	g_cubo2.setColor(0.0, 0.0, 1.0);
 
 	//INIT GLUT/////////////////////
 	////////////////////////////////
