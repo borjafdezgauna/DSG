@@ -80,7 +80,7 @@ int main(int argc, char** argv)
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize (1024, 768); 
 	glutCreateWindow (argv[0]);
-	glutFullScreen();
+//	glutFullScreen();
 
 
 	//callback functions
@@ -88,6 +88,8 @@ int main(int argc, char** argv)
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
 	glutKeyboardUpFunc(KeyboardUp);
+	glutMouseFunc(Mouse);
+	glutMotionFunc(MouseMotion);
 
 
 	while (1)
@@ -99,7 +101,7 @@ int main(int argc, char** argv)
 		g_cubeAngle+= 0.1;
 		//queued events?
 		glutMainLoopEvent();
-
+		Raton();
 
 		//RENDER////////////////////
 		////////////////////////////

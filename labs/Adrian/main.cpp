@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+#include "Keyboard.h"
 
 #define MOVE_STEP .4
 #define ANGLE_STEP 0.2
@@ -19,7 +20,7 @@ float g_cubeAngle= 0.f;
 
 
 
-void Keyboard(unsigned char key,int x, int y)
+/*void Keyboard(unsigned char key,int x, int y)
 {
 	//keyboard callback function
 	switch (key)
@@ -32,7 +33,7 @@ void Keyboard(unsigned char key,int x, int y)
 	case '4': g_yaw+= ANGLE_STEP; break;
 	case 27: exit(0);
 	}
-}
+}*/
 
 void Set3DView()
 {
@@ -102,7 +103,7 @@ int main(int argc, char** argv)
 	glutDisplayFunc(DrawScene);
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
-
+	glutKeyboardUpFunc(Keyboard2);
 
 	while (1)
 	{
@@ -112,7 +113,7 @@ int main(int argc, char** argv)
 		g_cubeAngle+= 0.1;
 		//queued events?
 		glutMainLoopEvent();
-
+		glutSetKeyRepeat(false);
 
 		//RENDER////////////////////
 		////////////////////////////

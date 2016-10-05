@@ -31,3 +31,6 @@
 extern float g_x;
 extern float g_z;
 extern float g_yaw;
+extern float g_pitch;
+extern int g_w;
+extern int g_h;
