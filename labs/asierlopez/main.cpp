@@ -5,6 +5,7 @@
 #include "keyboard.h"
 #include "mouse.h"
 #include "TimeCounter.h"
+#include "Cube.h"
 
 float g_x=0.0f;
 float g_y=0.0f;
@@ -14,7 +15,8 @@ float g_pitch= 0.0f;
 float g_yaw= 0.0f;
 int g_w;
 int g_h;
-float g_cubeAngle = 0.f;
+
+Cube cubo1, cubo2;
 
 
 void Set3DView()
@@ -34,25 +36,17 @@ void Set3DView()
 }
 
 
-void DrawCube()
-{
-	glColor3f(0.5, 1.0, 0.5);
-	glMatrixMode(GL_MODELVIEW);
-
-	glRotatef(g_cubeAngle, 1.0, 0.0, 0.0);
-	glutWireCube(1.0);
-}
-
 void DrawScene(void)
 {
 	//clean the backbuffer
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//viewing transformation
 	Set3DView();
 
 	//draw the cube
-	DrawCube();
+	cubo1.draw();
+	cubo2.draw();
 
 }
 
@@ -91,7 +85,14 @@ int main(int argc, char** argv)
 	glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);
 
-	SetVecesPerSecond(300);
+	cubo2.setPosition(3, 3, 3);
+	cubo1.setColor(1, 0, 0);
+	cubo2.setColor(0, 1, 1);
+	cubo2.setScale(2, 2, 2);
+
+	double g_cubeAngle = 0;
+
+	SetVecesPerSecond(500);
 
 	while (1)
 	{
@@ -104,6 +105,7 @@ int main(int argc, char** argv)
 		////////////////////////////
 		//"move" the cube
 		g_cubeAngle += 0.1;
+		cubo1.setRotation(g_cubeAngle, g_cubeAngle, 0);
 		//queued events?
 		glutMainLoopEvent();
 
