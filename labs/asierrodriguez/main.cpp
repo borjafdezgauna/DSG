@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+#include "Cube.h"
 #include "keyboard.h"
 #include "mouse.h"
 
@@ -15,8 +16,7 @@ float g_yaw= 0.0f;
 int g_w;
 int g_h;
 float g_cubeAngle= 0.f;
-
-
+Cube g_cubo1, g_cubo2;
 
 void Set3DView()
 {
@@ -54,7 +54,11 @@ void DrawScene(void)
 	Set3DView();
 
 	//draw the cube
-	DrawCube();
+	//DrawCube();
+
+
+	g_cubo1.draw();
+	g_cubo2.draw();
 
 }
 
@@ -71,6 +75,16 @@ void Reshape (int w, int h)
 
 int main(int argc, char** argv)
 {
+	g_cubo1.setPosition(0.5, 1.5, 0.0);
+	g_cubo2.setPosition(0.0, 0.0, -3.0);
+
+	g_cubo1.setScale(0.5, 1.5, 2.5);
+	g_cubo2.setScale(1.5, 2.5, 4.5);
+
+	g_cubo1.setColor(0.1, 0.5, 1.0);
+	g_cubo2.setColor(0.5, 0.1, 0.5);
+
+	
 
 	//INIT GLUT/////////////////////
 	////////////////////////////////
@@ -95,6 +109,7 @@ int main(int argc, char** argv)
 
 	while (1)
 	{
+		int ang = 0;
 		updateMovement();
 		// con este va solo hacia un lado cuando pulsas hasta que sueltas
 		OnMouseMovement();
@@ -111,11 +126,15 @@ int main(int argc, char** argv)
 		//queued events?
 		glutMainLoopEvent();
 
+		g_cubo1.setRotation(45 + ang, 45 + ang, 45 + ang);
+		g_cubo2.setRotation(45 + ang, 45 + ang, 45 + ang);
 
 		//RENDER////////////////////
 		////////////////////////////
 		glutPostRedisplay();
 		glutSwapBuffers();
+
+		ang = ang + 1;
 	}
    return 0;
 }
