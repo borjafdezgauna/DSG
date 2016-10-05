@@ -3,7 +3,8 @@
 
 #include "stdafx.h"
 #include "keyboard.h"
-
+#include "Mouse.h"
+#include "Cube.h"
 
 
 
@@ -17,7 +18,7 @@ float g_yaw= 0.0f;
 int g_w;
 int g_h;
 float g_cubeAngle= 0.f;
-
+Cube g_cubo1, g_cubo2;
 
 
 
@@ -41,14 +42,14 @@ void Set3DView()
 
 
 
-void DrawCube()
-{
-	glColor3f (0.5, 1.0, 0.5);
-	glMatrixMode(GL_MODELVIEW);
-	
-	glRotatef(g_cubeAngle,1.0,0.0,0.0);
-	glutWireCube (1.0);
-}
+//void DrawCube()
+//{
+//	glColor3f (0.5, 1.0, 0.5);
+//	glMatrixMode(GL_MODELVIEW);
+//	
+//	glRotatef(g_cubeAngle,1.0,0.0,0.0);
+//	glutWireCube (1.0);
+//}
 
 void DrawScene(void)
 {
@@ -60,7 +61,15 @@ void DrawScene(void)
 	Set3DView();
 
 	//draw the cube
-	DrawCube();
+	g_cubo1.setPosition(-0.8, 0.8, 0.8);
+	g_cubo1.setColor(0.9, 0.9, 0.7);
+	g_cubo1.setScale(0.5, 0.5, 0.5);
+	g_cubo1.draw();
+	g_cubo2.setPosition(0.9, 0.2, 0.3);
+	g_cubo2.setColor(0.9, 0.3 ,0.57);
+	g_cubo2.setScale(0.3, 0.3, 0.3);
+	g_cubo2.draw();
+
 
 }
 
@@ -93,11 +102,15 @@ int main(int argc, char** argv)
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
 	glutKeyboardUpFunc(pressKeyboard);
-	
-	glutSetKeyRepeat(false);
+	glutMouseFunc(pulsMouse);
+	glutMotionFunc(estMouse);
+	glutSetKeyRepeat(true);
 	
 
 	while (1){
+		//moverTeclado();
+		//moveMouse();
+
 		//glutKeyboardFunc(moverTeclado);
 		//UPDATE////////////////////
 		////////////////////////////
