@@ -101,7 +101,7 @@ int main(int argc, char** argv)
 		g_cubeAngle+= 0.1;
 		//queued events?
 		glutMainLoopEvent();
-		RatonLateral();
+		Raton();
 
 		//RENDER////////////////////
 		////////////////////////////
