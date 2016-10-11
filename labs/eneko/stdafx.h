@@ -30,4 +30,6 @@
 extern float g_x;
 extern float g_yaw;
 extern float g_z;
-extern bool pulsado;
+extern bool pulsado1;
+extern bool pulsado2;
+extern int g_w;
