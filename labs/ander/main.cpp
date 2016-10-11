@@ -97,6 +97,11 @@ int main(int argc, char** argv)
 	glutCreateWindow (argv[0]);
 //	glutFullScreen();
 
+	//añadimos para el culling despues de definir bien la normal de los vertices y caras en Cube.cpp
+	glCullFace(GL_BACK);
+	//mode = [GL_FRONT, GL_BACK, GL_FRONT_AND_BACK];
+	// CON FRONT quitamos la cara delantera, con back las traseras y con front and back no vemos nada xd
+	glEnable(GL_CULL_FACE);
 
 	//callback functions
 	glutDisplayFunc(DrawScene);

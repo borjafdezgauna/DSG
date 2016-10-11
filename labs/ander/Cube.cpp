@@ -35,9 +35,9 @@ void Cube::draw()
 	//2ºcara
 	//glColor3f(0, 1, 0);
 	glVertex3f(0.5, 0.5, 0.5);
-	glVertex3f(0.5, -0.5, 0.5);
-	glVertex3f(-0.5, -0.5, 0.5);
 	glVertex3f(-0.5, 0.5, 0.5);
+	glVertex3f(-0.5, -0.5, 0.5);
+	glVertex3f(0.5, -0.5, 0.5);
 
 	//3ºcara
 	//glColor3f(0, 1, 1);
@@ -49,9 +49,9 @@ void Cube::draw()
 	//4ºcara
 	//glColor3f(1, 0, 0);
 	glVertex3f(-0.5, -0.5, 0.5);
-	glVertex3f(-0.5, 0.5, 0.5);
+	glVertex3f(-0.5, -0.5,  -0.5);
 	glVertex3f(-0.5, 0.5, -0.5);
-	glVertex3f(-0.5, -0.5, -0.5);
+	glVertex3f(-0.5, 0.5, 0.5);
 
 	//5ºcara
 	//glColor3f(1, 0, 1);
@@ -63,9 +63,9 @@ void Cube::draw()
 	//6ºcara
 	//glColor3f(1, 1, 0);
 	glVertex3f(-0.5, 0.5, -0.5);
-	glVertex3f(0.5, 0.5, -0.5);
-	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(-0.5, -0.5, -0.5);
+	glVertex3f(0.5, -0.5, -0.5);
+	glVertex3f(0.5, 0.5, -0.5);
 
 	glEnd();
 
