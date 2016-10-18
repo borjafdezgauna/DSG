@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include "Keyboard.h"
+#include "Mouse.h"
+#include "Cube.h"
 
 #define MOVE_STEP .4
 #define ANGLE_STEP 0.2
@@ -17,6 +19,7 @@ float g_yaw= 0.0f;
 int g_w;
 int g_h;
 float g_cubeAngle= 0.f;
+Cube g_cubo1, g_cubo2;
 
 
 
@@ -53,25 +56,32 @@ void Set3DView()
 
 
 
-void DrawCube()
-{
-	glColor3f (0.5, 1.0, 0.5);
-	glMatrixMode(GL_MODELVIEW);
-	
-	glRotatef(g_cubeAngle,1.0,0.0,0.0);
-	glutWireCube (1.0);
-}
+//void DrawCube()
+//{
+//	glColor3f (0.5, 1.0, 0.5);
+//	glMatrixMode(GL_MODELVIEW);
+//	
+//	glRotatef(g_cubeAngle,1.0,0.0,0.0);
+//	glutWireCube (1.0);
+//}
 
 void DrawScene(void)
-{
+{	
+	g_cubo1.setPosition(0.0, 0.0, 0.0);
+	g_cubo1.setColor(255, 0, 0);
+	g_cubo2.setPosition(10.0, 0.0, 0.0);
+	g_cubo2.setColor(0, 0, 255);
 	//clean the backbuffer
-	glClear (GL_COLOR_BUFFER_BIT);
+	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//viewing transformation
 	Set3DView();
 
 	//draw the cube
-	DrawCube();
+	//DrawCube();
+	
+	g_cubo1.draw();
+	g_cubo2.draw();
 
 }
 
@@ -93,27 +103,35 @@ int main(int argc, char** argv)
 	////////////////////////////////
 	//init window and OpenGL context
 	glutInit(&argc, argv);
-	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
+	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize (1024, 768); 
 	glutCreateWindow (argv[0]);
-	glutFullScreen();
-
+	//glutFullScreen();
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	glEnable(GL_DEPTH_TEST);
 
 	//callback functions
 	glutDisplayFunc(DrawScene);
 	glutReshapeFunc(Reshape);
-	glutKeyboardFunc(Keyboard);
-	glutKeyboardUpFunc(Keyboard2);
+	//glutKeyboardFunc(Keyboard);
+	//glutKeyboardUpFunc(Keyboard2);
+	glutMouseFunc(MouseW);
+	glutMotionFunc(MouseMotionW);
 
 	while (1)
 	{
+		//QueryPerformanceCounter
+		//QueryPerformanceFrecuency
+		//declarar dos enteros int64
+		//sleep(1/60-(t2-t1))
 		//UPDATE////////////////////
 		////////////////////////////
 		//"move" the cube
 		g_cubeAngle+= 0.1;
 		//queued events?
 		glutMainLoopEvent();
-		glutSetKeyRepeat(false);
+		//glutSetKeyRepeat(false);
 
 		//RENDER////////////////////
 		////////////////////////////
