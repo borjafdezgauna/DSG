@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "Cube.h"
 
 
 float g_x=0.0f;
@@ -16,7 +17,8 @@ int g_w;
 int g_h;
 float g_cubeAngle= 0.f;
 
-
+//declaramos instancias de cubo
+Cube g_cubo1, g_cubo2;
 
 
 void Set3DView()
@@ -37,25 +39,29 @@ void Set3DView()
 
 
 
-void DrawCube()
-{
-	glColor3f (0.5, 1.0, 0.5);
-	glMatrixMode(GL_MODELVIEW);
-	
-	glRotatef(g_cubeAngle,1.0,0.0,0.0);
-	glutWireCube (1.0);
-}
+//void DrawCube()
+//{
+//	glColor3f (0.5, 1.0, 0.5);
+//	glMatrixMode(GL_MODELVIEW);
+//	
+//	glRotatef(g_cubeAngle,1.0,0.0,0.0);
+//	glutWireCube (1.0);
+//}
 
 void DrawScene(void)
 {
 	//clean the backbuffer
 	glClear (GL_COLOR_BUFFER_BIT);
 
+			//NOTA: si quisieramos vaciar el front bufer tambien
+			//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	//viewing transformation
 	Set3DView();
 
 	//draw the cube
-	DrawCube();
+	g_cubo1.draw();
+	g_cubo2.draw();
 
 }
 
@@ -73,6 +79,15 @@ void Reshape (int w, int h)
 int main(int argc, char** argv)
 {
 
+	g_cubo1.setPosition(0.0, 0.5, 0.0);
+	g_cubo1.setScale(0.5, 0.5, 0.5);
+	
+	g_cubo2.setPosition(0.0, 0.0, -3.0);
+	g_cubo2.setScale(2.0, 2.0, 2.0);
+
+	g_cubo1.setColor(1.0, 0.0, 0.0);
+	g_cubo2.setColor(0.0, 0.0, 1.0);
+
 	//INIT GLUT/////////////////////
 	////////////////////////////////
 	//init window and OpenGL context
@@ -80,14 +95,21 @@ int main(int argc, char** argv)
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize (1024, 768); 
 	glutCreateWindow (argv[0]);
-	glutFullScreen();
+//	glutFullScreen();
 
+	//añadimos para el culling despues de definir bien la normal de los vertices y caras en Cube.cpp
+	glCullFace(GL_BACK);
+	//mode = [GL_FRONT, GL_BACK, GL_FRONT_AND_BACK];
+	// CON FRONT quitamos la cara delantera, con back las traseras y con front and back no vemos nada xd
+	glEnable(GL_CULL_FACE);
 
 	//callback functions
 	glutDisplayFunc(DrawScene);
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
 	glutKeyboardUpFunc(KeyboardUp);
+	glutMouseFunc(Mouse);
+	glutMotionFunc(MouseMotion);
 
 
 	while (1)
@@ -99,7 +121,7 @@ int main(int argc, char** argv)
 		g_cubeAngle+= 0.1;
 		//queued events?
 		glutMainLoopEvent();
-
+		Raton();
 
 		//RENDER////////////////////
 		////////////////////////////
