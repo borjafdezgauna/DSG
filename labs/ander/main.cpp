@@ -103,6 +103,20 @@ int main(int argc, char** argv)
 	// CON FRONT quitamos la cara delantera, con back las traseras y con front and back no vemos nada xd
 	glEnable(GL_CULL_FACE);
 
+
+	//ILUMINACION
+	GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+	//GLfloat light_specular[]= { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat light_spot_direction[]= { -0,54, -0,54, -0,54};
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+	//glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, light_spot_direction);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+
+
 	//callback functions
 	glutDisplayFunc(DrawScene);
 	glutReshapeFunc(Reshape);
