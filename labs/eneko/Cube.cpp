@@ -24,37 +24,47 @@ void Cube::draw()
 	//Dibujar el cubo
 	glBegin(GL_QUADS);
 	//Primer lado
-	glColor3d(c1,c2, c3);
+	//glColor3d(c1,c2, c3);
+	GLfloat mat_ambient[] = { c1,c2,c3,1.0 };
+	GLfloat mat_diffuse[] = { c1,c2,c3,1.0 };
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+	glNormal3f(-1.0, 0.0, 0.0);
 	glVertex3f(-0.5, 0.5, -0.5);
 	glVertex3f(-0.5, -0.5, -0.5);
 	glVertex3f(-0.5, -0.5, 0.5);
 	glVertex3f(-0.5, 0.5, 0.5);
 	//Segundo lado
 	
+	glNormal3f(0.0, 0.0, 1.0);
 	glVertex3f(-0.5, 0.5, 0.5);
 	glVertex3f(-0.5, -0.5, 0.5);
 	glVertex3f(0.5, -0.5, 0.5);
 	glVertex3f(0.5, 0.5, 0.5);
 	//Tercer lado
 	
+	glNormal3f(1.0, 0.0, 0.0);
 	glVertex3f(0.5, 0.5, 0.5);
 	glVertex3f(0.5, -0.5, 0.5);
 	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(0.5, 0.5, -0.5);
 	//Cuarto lado
 
+	glNormal3f(0.0, 0.0, -1.0);
 	glVertex3f(0.5, 0.5, -0.5);
 	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(-0.5, -0.5, -0.5);
 	glVertex3f(-0.5, 0.5, -0.5);
 	//QuintoLado
 
+	glNormal3f(0.0, 1.0, 0.0);
 	glVertex3f(-0.5, 0.5, -0.5);
 	glVertex3f(-0.5, 0.5, 0.5);
 	glVertex3f(0.5, 0.5, 0.5);
 	glVertex3f(0.5, 0.5, -0.5);
 	//SextoLado
 	
+	glNormal3f(0.0, -1.0, 0.0);
 	glVertex3f(-0.5, -0.5, -0.5);
 	glVertex3f(-0.5, -0.5, 0.5);
 	glVertex3f(0.5, -0.5, 0.5);
