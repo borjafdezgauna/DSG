@@ -13,6 +13,6 @@ public:
 	void setPosition(double x, double y, double z);
 	void setRotation(double pitch, double yaw, double roll);
 	void setScale(double x, double y, double z);
-	void setColor(int r, int g, int b);
+	void setColor(double r, double g, double b);
 };
 

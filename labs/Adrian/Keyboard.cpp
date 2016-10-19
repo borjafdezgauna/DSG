@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Keyboard.h"
 
-#define MOVE_STEP .4
-#define ANGLE_STEP 0.2
+#define MOVE_STEP 0.01
+#define ANGLE_STEP 0.05
 #define PI 3.1416f
 
 BOOL tecla_1 = false;
@@ -23,7 +23,7 @@ void Keyboard(unsigned char key, int x, int y)
 	}
 }
 
-void Keyboard2(unsigned char key, int x, int y) 
+void Keyboard_pulsar() 
 {
 		if (tecla_1) {
 			g_x -= MOVE_STEP*sin(g_yaw*PI / 180);
@@ -39,4 +39,16 @@ void Keyboard2(unsigned char key, int x, int y)
 		if (tecla_4) {
 			g_yaw += ANGLE_STEP;
 		}
+}
+void Keyboard_up(unsigned char key, int x, int y) {
+	switch (key) {
+	case '8':	tecla_1 = false;
+		break;
+	case '2':	tecla_2 = false;
+		break;
+	case '6':	tecla_3 = false;
+		break;
+	case '4':	tecla_4 = false;
+		break;
+	}
 }
