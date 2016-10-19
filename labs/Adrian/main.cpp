@@ -52,6 +52,8 @@ void Set3DView()
 	glRotatef(-g_yaw, 0.0, 1.0, 0.0);
 	glRotatef(-g_pitch, 1.0, 0.0, 0.0);	
 	glTranslatef(-g_x, -g_y, -g_z);
+	GLfloat light_position[] = { -1.0,-1.0,-1.0,0.0 };
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 }
 
 
@@ -80,6 +82,7 @@ void DrawScene(void)
 	//draw the cube
 	//DrawCube();
 	
+	
 	g_cubo1.draw();
 	g_cubo2.draw();
 
@@ -104,7 +107,7 @@ int main(int argc, char** argv)
 	//init window and OpenGL context
 	glutInit(&argc, argv);
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize (1024, 768); 
+	glutInitWindowSize (1024, 768);
 	glutCreateWindow (argv[0]);
 	//glutFullScreen();
 	glEnable(GL_CULL_FACE);
@@ -138,11 +141,13 @@ int main(int argc, char** argv)
 		GLfloat light_ambient[] = { 0.0,0.0,0.0,1.0 };
 		GLfloat light_diffuse[] = { 1.0,1.0,1.0,1.0 };
 		GLfloat light_specular[] = { 1.0,1.0,1.0,1.0 };
-		GLfloat light_position[] = { 1.0,1.0,1.0,0.0 };
+		
+		//GLfloat light_spot_direction[] = { 0.0,0.0,-1.0 };
 		glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
 		glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 		glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-		glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+		
+		//glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, light_spot_direction);
 		//glutSetKeyRepeat(false);
 
 		//RENDER////////////////////
