@@ -25,7 +25,14 @@ void Cube::draw()
 	//1ºcara
 	//glColor3f(0, 0, 1);
 	
-	glColor3f(m_colorr, m_colorg, m_colorb);
+	//glColor3f(m_colorr, m_colorg, m_colorb);
+
+	//UTILIZAMOS LOS COLORES COMO SPECULAR
+	GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat low_shininess[] = { 5.0 };
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+	glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
+
 
 	glVertex3f(0.5, 0.5, 0.5);
 	glVertex3f(0.5, -0.5, 0.5);
