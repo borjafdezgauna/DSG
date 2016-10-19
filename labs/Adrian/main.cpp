@@ -68,9 +68,9 @@ void Set3DView()
 void DrawScene(void)
 {	
 	g_cubo1.setPosition(0.0, 0.0, 0.0);
-	g_cubo1.setColor(255, 0, 0);
-	g_cubo2.setPosition(10.0, 0.0, 0.0);
-	g_cubo2.setColor(0, 0, 255);
+	g_cubo1.setColor(1.0, 0.0, 0.0);
+	g_cubo2.setPosition(5.0, 0.0, 0.0);
+	g_cubo2.setColor(0.0, 0.0, 1.0);
 	//clean the backbuffer
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -114,8 +114,8 @@ int main(int argc, char** argv)
 	//callback functions
 	glutDisplayFunc(DrawScene);
 	glutReshapeFunc(Reshape);
-	//glutKeyboardFunc(Keyboard);
-	//glutKeyboardUpFunc(Keyboard2);
+	glutKeyboardFunc(Keyboard);
+	glutKeyboardUpFunc(Keyboard_up);
 	glutMouseFunc(MouseW);
 	glutMotionFunc(MouseMotionW);
 
@@ -125,12 +125,24 @@ int main(int argc, char** argv)
 		//QueryPerformanceFrecuency
 		//declarar dos enteros int64
 		//sleep(1/60-(t2-t1))
+
+		Keyboard_pulsar();
 		//UPDATE////////////////////
 		////////////////////////////
 		//"move" the cube
 		g_cubeAngle+= 0.1;
 		//queued events?
 		glutMainLoopEvent();
+		glEnable(GL_LIGHTING);
+		glEnable(GL_LIGHT0);
+		GLfloat light_ambient[] = { 0.0,0.0,0.0,1.0 };
+		GLfloat light_diffuse[] = { 1.0,1.0,1.0,1.0 };
+		GLfloat light_specular[] = { 1.0,1.0,1.0,1.0 };
+		GLfloat light_position[] = { 1.0,1.0,1.0,0.0 };
+		glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+		glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+		glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+		glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 		//glutSetKeyRepeat(false);
 
 		//RENDER////////////////////
