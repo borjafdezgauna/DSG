@@ -8,6 +8,8 @@ bool pulsa8;
 bool pulsa6;
 bool pulsa4;
 bool pulsa2;
+bool flag;
+
 
 void Keyboard(unsigned char key, int x, int y)
 {
@@ -18,6 +20,7 @@ void Keyboard(unsigned char key, int x, int y)
 	case '2':	pulsa2 = true; break;
 	case '6': pulsa6 = true; break;
 	case '4':  pulsa4 = true; break;
+	case 'm': flag = !flag; break;
 		
 	case 27: exit(0);
 	}
@@ -38,6 +41,8 @@ void Keyboard(unsigned char key, int x, int y)
 			if (pulsa4) {
 				g_yaw += ANGLE_STEP;
 			}
+			if (flag) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			else glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 		}
 
