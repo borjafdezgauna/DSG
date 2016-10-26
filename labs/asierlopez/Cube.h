@@ -5,6 +5,7 @@ class Cube
 	double yaw, pitch, roll;
 	double scaleX, scaleY, scaleZ;
 	double red, green, blue;
+	unsigned int textura;
 
 public:
 	Cube();
@@ -19,5 +20,7 @@ public:
 	void setScale(double scaleX, double scaleY, double scaleZ);
 
 	void setColor(double red, double green, double blue);
+
+	void setTexture(char* file);
 };
 

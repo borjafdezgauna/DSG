@@ -112,6 +112,10 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="TimeCounter.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="textura.jpg" />
+    <Image Include="textura2.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets" Condition="Exists('..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets')" />
