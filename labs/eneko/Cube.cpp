@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Cube.h"
-
+#include "../../Simple OpenGL Image Library/src/SOIL.h"
 
 Cube::Cube()
 {
@@ -20,55 +20,85 @@ void Cube::draw()
 	glRotatef(-myaw, 0.0, 1.0, 0.0);
 	glRotatef(-mpitch, 1.0, 0.0, 0.0);*/
 	glScaled(esX, esY, esZ);
-
-	//Dibujar el cubo
+	/*if(control%2!=0)
+	glBegin(GL_LINE_LOOP);
+	else*/
+	
+	
+	glBindTexture(GL_TEXTURE_2D, id);
 	glBegin(GL_QUADS);
 	//Primer lado
 	//glColor3d(c1,c2, c3);
 	GLfloat mat_ambient[] = { c1,c2,c3,1.0 };
 	GLfloat mat_diffuse[] = { c1,c2,c3,1.0 };
+	GLfloat mat_especular[] = { 0,0,0,0};
 	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
-	glNormal3f(-1.0, 0.0, 0.0);
-	glVertex3f(-0.5, 0.5, -0.5);
-	glVertex3f(-0.5, -0.5, -0.5);
-	glVertex3f(-0.5, -0.5, 0.5);
-	glVertex3f(-0.5, 0.5, 0.5);
-	//Segundo lado
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_especular);
+	
+
+	//cara delantera
 	
 	glNormal3f(0.0, 0.0, 1.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(-0.5, 0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(-0.5, -0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(0.5, 0.5, 0.5);
-	//Tercer lado
-	
-	glNormal3f(1.0, 0.0, 0.0);
-	glVertex3f(0.5, 0.5, 0.5);
-	glVertex3f(0.5, -0.5, 0.5);
-	glVertex3f(0.5, -0.5, -0.5);
-	glVertex3f(0.5, 0.5, -0.5);
-	//Cuarto lado
-
-	glNormal3f(0.0, 0.0, -1.0);
-	glVertex3f(0.5, 0.5, -0.5);
-	glVertex3f(0.5, -0.5, -0.5);
-	glVertex3f(-0.5, -0.5, -0.5);
-	glVertex3f(-0.5, 0.5, -0.5);
-	//QuintoLado
-
+	/*cara superior*/
 	glNormal3f(0.0, 1.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(-0.5, 0.5, -0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(-0.5, 0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(0.5, 0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(0.5, 0.5, -0.5);
-	//SextoLado
-	
-	glNormal3f(0.0, -1.0, 0.0);
-	glVertex3f(-0.5, -0.5, -0.5);
-	glVertex3f(-0.5, -0.5, 0.5);
+	//cara derecha	
+	glNormal3f(1.0, 0.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
+	glVertex3f(0.5, 0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3f(0.5, 0.5, -0.5);
+
+	//cara inferior	
+	glNormal3f(0.0, -1.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
+	glVertex3f(-0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3f(-0.5, -0.5, 0.5);
+	//cara izquierda
+	glNormal3f(-1.0, 0.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
+	glVertex3f(-0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3f(-0.5, 0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(-0.5, 0.5, -0.5);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3f(-0.5, -0.5, -0.5);
+	//cara trasera
+	glNormal3f(0.0, 0.0, -1.0);
+	glTexCoord2f(1.0,0.0);
+	glVertex3f(0.5, 0.5, -0.5);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(-0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3f(-0.5, 0.5, -0.5);
 	glEnd();
 	glPopMatrix();
 }
@@ -100,4 +130,8 @@ void Cube::setColor(double color1, double color2, double color3)
 	c1 = color1;
 	c2 = color2;
 	c3 = color3;
+}
+void Cube::setIdenti(int ida) 
+{
+	id = ida;
 }
