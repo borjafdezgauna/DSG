@@ -71,8 +71,10 @@ void DrawScene(void)
 {	
 	g_cubo1.setPosition(0.0, 0.0, 0.0);
 	g_cubo1.setColor(1.0, 0.0, 0.0);
+	g_cubo1.setTexture("C:/Users/Adrián/Source/Repos/DSG/labs/Adrian/text_1.jpg");
 	g_cubo2.setPosition(5.0, 0.0, 0.0);
 	g_cubo2.setColor(0.0, 0.0, 1.0);
+	g_cubo2.setTexture("C:/Users/Adrián/Source/Repos/DSG/labs/Adrian/text_2.jpg");
 	//clean the backbuffer
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -113,6 +115,10 @@ int main(int argc, char** argv)
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV, GL_BLEND);
+	glTexParameterf(GL_TEXTURE_ENV, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 	//callback functions
 	glutDisplayFunc(DrawScene);
