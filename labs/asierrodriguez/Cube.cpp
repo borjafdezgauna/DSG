@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Cube.h"
 
+unsigned int idText;
 
 Cube::Cube()
 {
@@ -30,45 +31,70 @@ void Cube::draw() {
 	glRotated(m_pitch, 1, 0, 0);
 	glRotated(m_roll, 0, 0, 1);
 
+	glBindTexture(GL_TEXTURE_2D,idText);
+
 	glBegin(GL_QUADS);
 
 	//cara delantera
 	glNormal3f(0.0, 0.0, 1.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(-0.5, 0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(-0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(0.5, 0.5, 0.5);
 	//cara superior
 	glNormal3f(0.0, 1.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(-0.5, 0.5, -0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(-0.5, 0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(0.5, 0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(0.5, 0.5, -0.5);
 	//cara derecha	
 	glNormal3f(1.0, 0.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(0.5, 0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(0.5, 0.5, -0.5);
-	//cara inferior	
+	//cara inferior
 	glNormal3f(0.0, -1.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(-0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(-0.5, -0.5, 0.5);
 	//cara izquierda
 	glNormal3f(-1.0, 0.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(-0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(-0.5, 0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(-0.5, 0.5, -0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(-0.5, -0.5, -0.5);
 	//cara trasera
 	glNormal3f(0.0, 0.0, -1.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(0.5, 0.5, -0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(-0.5, -0.5, -0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(-0.5, 0.5, -0.5);
-
 
 	glEnd();
 
@@ -101,4 +127,11 @@ void Cube::setColor(double color1, double color2, double color3)
 	c1 = color1;
 	c2 = color2;
 	c3 = color3;
+}
+
+void Cube::generateTexture(char *filename) {
+	unsigned int x = SOIL_load_OGL_texture(filename, 0, 0, 0);
+	idText = x;
+	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_BLEND);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 }

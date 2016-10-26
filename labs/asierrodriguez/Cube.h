@@ -14,5 +14,6 @@ public:
 	void setRotation(double pitch, double yaw, double roll);
 	void setScale(double x, double y, double z);
 	void setColor(double color1, double color2, double color3);
+	void generateTexture(char *filename);
 };
 

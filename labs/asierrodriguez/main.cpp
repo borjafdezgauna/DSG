@@ -2,10 +2,11 @@
 //
 
 #include "stdafx.h"
+#include "../../Simple OpenGL Image Library/src/SOIL.h"
 #include "Cube.h"
 #include "keyboard.h"
 #include "mouse.h"
-
+#pragma comment(lib,"../../Debug/SOIL.lib")
 
 float g_x=0.0f;
 float g_y=0.0f;
@@ -93,13 +94,17 @@ int main(int argc, char** argv)
 
 	//init window and OpenGL context
 	glutInit(&argc, argv);
+	
+	
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize (1024, 768); 
 	glutCreateWindow (argv[0]);
 	//glutFullScreen();
 
 	glEnable(GL_DEPTH_TEST);
-
+	glEnable(GL_TEXTURE_2D);
+	g_cubo1.generateTexture("C:/Users/asier/Source/Reposs/DSG/labs/asierrodriguez/km.png");
+	//g_cubo2.generateTexture("C:/Users/asier/Source/Reposs/DSG/labs/asierrodriguez/km2.png");
 	// iluminacion
 	GLfloat light_specularn[] = { 1.0, 1.0, 1.0, 1.0 };
 	GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
