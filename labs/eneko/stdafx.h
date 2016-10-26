@@ -33,3 +33,5 @@ extern float g_z;
 extern bool pulsado1;
 extern bool pulsado2;
 extern int g_w;
+extern int control;
+extern int control1;

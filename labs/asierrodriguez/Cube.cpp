@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Cube.h"
 
+unsigned int idText;
 
 Cube::Cube()
 {
@@ -13,41 +14,88 @@ Cube::~Cube()
 
 void Cube::draw() {
 	//Dibujar el cubo
+	GLfloat mat_ambient[] = { c1,c2,c3,1.0 };
+	GLfloat mat_diffuse[] = { c1,c2,c3,1.0 };
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+	GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+	GLfloat low_shininess[] = { 5.0 };
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+	glMaterialfv(GL_FRONT, GL_SHININESS, low_shininess);
 
 	glPushMatrix();
 	glTranslated(m_x, m_y, m_z);
 	//glRotated(m_roll, m_yaw, m_pitch);
 	glScaled(m_scale_x, m_scale_y, m_scale_z);
-	glColor3d(m_color_r, m_color_g, m_color_b);
 	glRotated(m_yaw, 0, 1, 0);
 	glRotated(m_pitch, 1, 0, 0);
 	glRotated(m_roll, 0, 0, 1);
 
+	glBindTexture(GL_TEXTURE_2D,idText);
+
 	glBegin(GL_QUADS);
 
-	//Cara frontal
+	//cara delantera
+	glNormal3f(0.0, 0.0, 1.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(-0.5, 0.5, 0.5);
-	glVertex3f(0.5, 0.5, 0.5);
-	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(-0.5, -0.5, 0.5);
-
-	//Cara dcha
-	glVertex3f(0.5, 0.5, 0.5);
-	glVertex3f(0.5, 0.5, -0.5);
-	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(0.5, -0.5, 0.5);
-
-	//Cara izq
-	glVertex3f(-0.5, -0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(0.5, 0.5, 0.5);
+	//cara superior
+	glNormal3f(0.0, 1.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
+	glVertex3f(-0.5, 0.5, -0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(-0.5, 0.5, 0.5);
-	glVertex3f(-0.5, 0.5, -0.5);
-	glVertex3f(-0.5, -0.5, -0.5);
-
-	//Cara trasera
-	glVertex3f(-0.5, 0.5, -0.5);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3f(0.5, 0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
 	glVertex3f(0.5, 0.5, -0.5);
+	//cara derecha	
+	glNormal3f(1.0, 0.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
+	glVertex3f(0.5, 0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
 	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(0.5, 0.5, -0.5);
+	//cara inferior
+	glNormal3f(0.0, -1.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
 	glVertex3f(-0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(-0.5, -0.5, 0.5);
+	//cara izquierda
+	glNormal3f(-1.0, 0.0, 0.0);
+	glTexCoord2f(1.0, 0.0);
+	glVertex3f(-0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3f(-0.5, 0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3f(-0.5, 0.5, -0.5);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(-0.5, -0.5, -0.5);
+	//cara trasera
+	glNormal3f(0.0, 0.0, -1.0);
+	glTexCoord2f(1.0, 0.0);
+	glVertex3f(0.5, 0.5, -0.5);
+	glTexCoord2f(0.0, 0.0);
+	glVertex3f(0.5, -0.5, -0.5);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3f(-0.5, -0.5, -0.5);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(-0.5, 0.5, -0.5);
+
 	glEnd();
 
 	glPopMatrix();
@@ -74,9 +122,16 @@ void Cube::setScale(double x, double y, double z)
 	m_scale_z = z;
 }
 
-void Cube::setColor(double r, double g, double b)
+void Cube::setColor(double color1, double color2, double color3)
 {
-	m_color_r = r;
-	m_color_g = g;
-	m_color_b = b;
+	c1 = color1;
+	c2 = color2;
+	c3 = color3;
+}
+
+void Cube::generateTexture(char *filename) {
+	unsigned int x = SOIL_load_OGL_texture(filename, 0, 0, 0);
+	idText = x;
+	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_BLEND);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 }
