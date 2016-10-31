@@ -5,6 +5,10 @@
 #include "keyboard.h"
 #include "mouse.h"
 #include "TimeCounter.h"
+#include "Cube.h"
+
+#include "../../Simple OpenGL Image Library/src/SOIL.h"
+#pragma comment (lib,"../../Debug/SOIL.lib")
 
 float g_x=0.0f;
 float g_y=0.0f;
@@ -14,7 +18,8 @@ float g_pitch= 0.0f;
 float g_yaw= 0.0f;
 int g_w;
 int g_h;
-float g_cubeAngle = 0.f;
+
+Cube cubo1, cubo2;
 
 
 void Set3DView()
@@ -34,25 +39,17 @@ void Set3DView()
 }
 
 
-void DrawCube()
-{
-	glColor3f(0.5, 1.0, 0.5);
-	glMatrixMode(GL_MODELVIEW);
-
-	glRotatef(g_cubeAngle, 1.0, 0.0, 0.0);
-	glutWireCube(1.0);
-}
-
 void DrawScene(void)
 {
 	//clean the backbuffer
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//viewing transformation
 	Set3DView();
 
 	//draw the cube
-	DrawCube();
+	cubo1.draw();
+	cubo2.draw();
 
 }
 
@@ -91,7 +88,45 @@ int main(int argc, char** argv)
 	glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);
 
-	SetVecesPerSecond(300);
+	//culling
+	glCullFace(GL_BACK);
+	glEnable(GL_CULL_FACE);
+
+
+	
+
+	//Luces
+	GLfloat light_ambient[] = { 0.0,1.0,0.0,1.0 };
+	GLfloat light_diffuse[] = { 1.0,1.0,1.0,1.0 };
+	GLfloat light_specular[] = { 1.0,1.0,1.0,1.0 };
+	GLfloat light_position[] = { -1.0, -1.0, -1.0, 0.0 };
+
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+
+
+
+	//Propiedades del cubo
+	cubo2.setPosition(3, 3, 3);
+	cubo1.setColor(1, 0, 0);
+	cubo2.setColor(0, 1, 1);
+	cubo2.setScale(2, 2, 2);
+
+	//Texuras 2D
+	glEnable(GL_TEXTURE_2D);
+	cubo1.setTexture("C:/Users/asier/Source/Repos/DSG/labs/asierlopez/textura2.png");
+
+
+
+
+
+	double g_cubeAngle = 0;
+
+	SetVecesPerSecond(500);
 
 	while (1)
 	{
@@ -104,6 +139,7 @@ int main(int argc, char** argv)
 		////////////////////////////
 		//"move" the cube
 		g_cubeAngle += 0.1;
+		cubo1.setRotation(g_cubeAngle, 0, 0);
 		//queued events?
 		glutMainLoopEvent();
 

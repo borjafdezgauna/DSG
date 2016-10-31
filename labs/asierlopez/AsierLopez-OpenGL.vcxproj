@@ -97,6 +97,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cube.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="mouse.h" />
     <ClInclude Include="stdafx.h" />
@@ -104,11 +105,16 @@
     <ClInclude Include="TimeCounter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cube.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="TimeCounter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textura.jpg" />
+    <Image Include="textura2.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
