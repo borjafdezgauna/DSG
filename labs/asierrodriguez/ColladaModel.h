@@ -1,5 +1,8 @@
 #pragma once
 #include <vector>
+#include "../../tinyxml2/tinyxml2.h"
+#include "../../Debug/tinyxml2.lib"
+
 class ColladaModel
 {
 	std::vector<double> m_positions;
@@ -12,4 +15,10 @@ class ColladaModel
 public:
 	ColladaModel(char *filename);
 	virtual ~ColladaModel();
+
+private:
+	void parseXMLFloatArray(tinyxml2::XMLElement * pFloatArray, std::vector<double>& vector);
+
+	void parseXMLIntArray(tinyxml2::XMLElement * pFloatArray, std::vector<int>& vector);
+
 };
