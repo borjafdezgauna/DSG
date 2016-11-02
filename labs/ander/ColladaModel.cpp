@@ -15,7 +15,7 @@ ColladaModel::ColladaModel(char* fileName)
 	tinyxml2::XMLElement* pInitFrom = pImage->FirstChildElement("init_from");
 	char* pFileName = (char*)pInitFrom->GetText();
 	pFileName = &(pFileName[8]);
-	//textureId = SOIL_load_OGL_texture(pFileName,0,0,0);
+	textureId = SOIL_load_OGL_texture(pFileName,0,0,0);
 
 	//library_geometries
 	tinyxml2::XMLElement* pLibraryGeometries = pRoot->FirstChildElement("library_geometries");
@@ -43,18 +43,19 @@ ColladaModel::~ColladaModel()
 
 void ColladaModel::draw()
 {
-
+	glPushMatrix();
 	glBegin(GL_TRIANGLES);
 	int index = 0;
 	for (int i = 0; i < m_index.size(); i++)
 	{
 		index= m_index[i];
 		glNormal3f(m_normals[index*3], m_normals[index*3 + 1], m_normals[index*3 + 2]);
-		glTexCoord3f(m_texCoords[index *2], m_texCoords[index *2 + 1], m_texCoords[index *2 + 2]);
+		glTexCoord2f(m_texCoords[index *2], m_texCoords[index *2 + 1]);
 		glVertex3f(m_positions[index *3], m_positions[index *3 +1], m_positions[index *3 + 2]);
 
 	}
 	glEnd();
+	glPopMatrix();
 }
 
 
