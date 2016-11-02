@@ -15,11 +15,13 @@
 [Dd]ebugPublic/
 **/[Rr]elease/
 [Rr]eleases/
+
 private/
 **/SOIL.tlog/
 *.tlog
 *.idb
 *.lastbuildstate
+
 x64/
 x86/
 build/
@@ -28,8 +30,6 @@ bld/
 
 [Oo]bj/
 [Ii]pch/
-logs/
-/data/
 
 # Roslyn cache directories
 *.ide/
@@ -72,7 +72,7 @@ dlldata.c
 *.pidb
 *.svclog
 *.scc
-
+!**/tinyxml2.vcxproj
 # Chutzpah Test files
 _Chutzpah*
 
