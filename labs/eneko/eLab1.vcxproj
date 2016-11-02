@@ -92,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ColladaModel.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="main.cpp" />
@@ -102,6 +103,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ColladaModel.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="Mouse.h" />
