@@ -19,6 +19,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="EM208_heavy.dae">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="keyboard.h">
@@ -37,6 +40,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColladaModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,12 +65,18 @@
     <ClCompile Include="Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ColladaModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="textura.jpg">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="textura2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EM208_heavy_D.tga">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
