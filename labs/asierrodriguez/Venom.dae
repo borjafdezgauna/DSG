@@ -6,7 +6,7 @@
   </asset>
   <library_images>
     <image id="Image">
-      <init_from>file:///Venom_D.tga</init_from>
+      <init_from>file:///Venom_D.jpg</init_from>
     </image>
   </library_images>
   <library_materials>
