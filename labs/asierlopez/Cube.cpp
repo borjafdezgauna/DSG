@@ -26,16 +26,17 @@ void Cube::draw()
 	//glColor3d(red, green, blue);
 	glScaled(scaleX, scaleY, scaleZ);
 
-	GLfloat mat_ambient[] = { red,green,blue,1.0 };
-	GLfloat mat_diffuse[] = { red,green,blue,1.0 };
-	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+	//iluminacion del material
+	//GLfloat mat_ambient[] = { red,green,blue,1.0 };
+	//GLfloat mat_diffuse[] = { red,green,blue,1.0 };
+	//glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	//glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+	
+	//textura seleccionador
+	glBindTexture(GL_TEXTURE_2D, textura);
 
 	//dibujar el cubo
 	glBegin(GL_QUADS);
-
-	//textura seleccionador
-	glBindTexture(GL_TEXTURE_2D, textura);
 
 	//cara alante
 	//glTexCoord3f
@@ -124,7 +125,7 @@ void Cube::setColor(double red, double green, double blue)
 void Cube::setTexture(char * file)
 {
 	Cube::textura = SOIL_load_OGL_texture(file, 0, 0, 0);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND); //para interpretar coordenadas fuera de 0 y 1 // afecta para el venom
 }
 
 

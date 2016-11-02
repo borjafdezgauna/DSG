@@ -96,6 +96,7 @@
   <ItemGroup>
     <None Include="EM208_heavy.dae" />
     <None Include="packages.config" />
+    <None Include="Venom.dae" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColladaModel.h" />
@@ -119,6 +120,9 @@
     <Image Include="EM208_heavy_D.tga" />
     <Image Include="textura.jpg" />
     <Image Include="textura2.png" />
+    <Image Include="Venom_D.jpg" />
+    <Image Include="Venom_D.png" />
+    <Image Include="Venom_D.tga" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
