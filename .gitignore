@@ -16,9 +16,7 @@
 **/[Rr]elease/
 [Rr]eleases/
 private/
-*.tlog
-*.idb
-*.lastbuildstate
+
 x64/
 x86/
 build/
