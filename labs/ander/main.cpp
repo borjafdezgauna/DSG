@@ -38,6 +38,7 @@ void Set3DView()
 	glRotatef(-g_yaw, 0.0, 1.0, 0.0);
 	glRotatef(-g_pitch, 1.0, 0.0, 0.0);	
 	glTranslatef(-g_x, -g_y, -g_z);
+
 		
 }
 
@@ -68,6 +69,8 @@ void DrawScene(void)
 	g_cubo2.draw();
 	venom.draw();
 
+	
+	
 }
 
 void Reshape (int w, int h)
@@ -112,6 +115,8 @@ int main(int argc, char** argv)
 	// CON FRONT quitamos la cara delantera, con back las traseras y con front and back no vemos nada xd
 	glEnable(GL_CULL_FACE);
 
+	
+
 
 	//ILUMINACION
 	GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
@@ -125,6 +130,10 @@ int main(int argc, char** argv)
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
+	//PRUEBAS CON TEXTURAS VENOM
+	glEnable(GL_TEXTURE_2D);
+
+	venom.cargarTextura();
 
 	//callback functions
 	glutDisplayFunc(DrawScene);

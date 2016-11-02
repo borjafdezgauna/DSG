@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "ColladaModel.h"
 
-
+char* modelo;
+unsigned int in;
 
 ColladaModel::ColladaModel(char* fileName)
 {
@@ -13,9 +14,9 @@ ColladaModel::ColladaModel(char* fileName)
 	tinyxml2::XMLElement* pLibraryImages = pRoot->FirstChildElement("library_images");
 	tinyxml2::XMLElement* pImage = pLibraryImages->FirstChildElement("image");
 	tinyxml2::XMLElement* pInitFrom = pImage->FirstChildElement("init_from");
-	char* pFileName = (char*)pInitFrom->GetText();
-	pFileName = &(pFileName[8]);
-	textureId = SOIL_load_OGL_texture(pFileName,0,0,0);
+	const char* pFileName = (char*)pInitFrom->GetText()[8];
+	modelo = strdup(pFileName);
+	
 
 	//library_geometries
 	tinyxml2::XMLElement* pLibraryGeometries = pRoot->FirstChildElement("library_geometries");
@@ -44,18 +45,27 @@ ColladaModel::~ColladaModel()
 void ColladaModel::draw()
 {
 	glPushMatrix();
+	
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glBindTexture(GL_TEXTURE_2D, textureId);
 	glBegin(GL_TRIANGLES);
 	int index = 0;
 	for (int i = 0; i < m_index.size(); i++)
 	{
 		index= m_index[i];
 		glNormal3f(m_normals[index*3], m_normals[index*3 + 1], m_normals[index*3 + 2]);
-		glTexCoord2f(m_texCoords[index *2], m_texCoords[index *2 + 1]);
+		glTexCoord2f(m_texCoords[index *2], 1-m_texCoords[index *2 + 1]);
 		glVertex3f(m_positions[index *3], m_positions[index *3 +1], m_positions[index *3 + 2]);
 
 	}
 	glEnd();
 	glPopMatrix();
+}
+
+void ColladaModel::cargarTextura() {
+	in = SOIL_load_OGL_texture(modelo, 0, 0, 0);
+	textureId = in;
 }
 
 
