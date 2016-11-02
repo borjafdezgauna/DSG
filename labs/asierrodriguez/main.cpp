@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "../../Simple OpenGL Image Library/src/SOIL.h"
 #include "Cube.h"
+#include "ColladaModel.h"
 #include "keyboard.h"
 #include "mouse.h"
 #pragma comment(lib,"../../Debug/SOIL.lib")
@@ -18,6 +19,8 @@ int g_w;
 int g_h;
 float g_cubeAngle= 0.f;
 Cube g_cubo1, g_cubo2;
+ColladaModel colla("Venom.dae");
+//ColladaModel colla("EM208_heavy.dae");
 
 void Set3DView()
 {
@@ -60,8 +63,11 @@ void DrawScene(void)
 	//DrawCube();
 
 
-	g_cubo1.draw();
-	g_cubo2.draw();
+	/*g_cubo1.draw();
+	g_cubo2.draw();*/
+
+	colla.draw();
+
 
 }
 

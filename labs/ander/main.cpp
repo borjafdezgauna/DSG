@@ -5,6 +5,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Cube.h"
+#include "ColladaModel.h"
 
 
 float g_x=0.0f;
@@ -80,6 +81,7 @@ void Reshape (int w, int h)
 
 int main(int argc, char** argv)
 {
+	ColladaModel m("Venom.dae");
 
 	g_cubo1.setPosition(0.0, 0.5, -1.0);
 	g_cubo1.setScale(0.5, 0.5, 0.5);

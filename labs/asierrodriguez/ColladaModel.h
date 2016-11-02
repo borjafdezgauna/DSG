@@ -1,22 +1,26 @@
 #pragma once
 #include <vector>
-#pragma comment(lib, "../../Debug/tinyxml2.lib")
 #include "../../tinyxml2/tinyxml2.h"
+#pragma comment(lib,"Debug/tinyxml2.lib")
+
+
 class ColladaModel
 {
-	char* modelo;
 	std::vector<double> m_positions;
 	std::vector<double> m_normals;
-	std::vector<double> m_texCoords;
-	std::vector<int> m_index;
-	int textureId;
+	std::vector<double> m_textCoords;
+	unsigned int textureId;
+	std::vector<int> m_indexCoords;
+
 
 public:
-	ColladaModel(char* fileName);
-	~ColladaModel();
+	ColladaModel(char *filename);
+	virtual ~ColladaModel();
 	void draw();
-	
-	void parseXMLFloatArray(tinyxml2::XMLElement * pFloatArray, std::vector<double>& vector);
-	void parseXMLIntArray(tinyxml2::XMLElement * pFloatArray, std::vector<int>& vector);
-};
 
+private:
+	void parseXMLFloatArray(tinyxml2::XMLElement * pFloatArray, std::vector<double>& vector);
+
+	void parseXMLIntArray(tinyxml2::XMLElement * pFloatArray, std::vector<int>& vector);
+
+};
