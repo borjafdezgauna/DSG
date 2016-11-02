@@ -21,8 +21,8 @@ int g_w;
 int g_h;
 
 Cube cubo1, cubo2;
-//ColladaModel heavy("Venom.dae");
-ColladaModel heavy("EM208_heavy.dae");
+ColladaModel heavy("Venom.dae");
+//ColladaModel heavy("EM208_heavy.dae");
 
 void Set3DView()
 {
@@ -95,7 +95,8 @@ int main(int argc, char** argv)
 
 	//culling
 	glCullFace(GL_BACK);
-	glEnable(GL_CULL_FACE);
+	//glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
 
 
 	
