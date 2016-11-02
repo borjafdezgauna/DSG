@@ -22,6 +22,9 @@
     <None Include="EM208_heavy.dae">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Venom.dae">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="keyboard.h">
@@ -77,6 +80,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="EM208_heavy_D.tga">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Venom_D.tga">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Venom_D.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Venom_D.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
