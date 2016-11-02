@@ -15,7 +15,7 @@ ColladaModel::ColladaModel(char* fileName)
 	tinyxml2::XMLElement* pInitFrom = pImage->FirstChildElement("init_from");
 	char* pFileName = (char*)pInitFrom->GetText();
 	pFileName = &(pFileName[8]);
-	//textureId = SOIL_load_OGL_texture(pFileName,0,0,0);
+	textureId = SOIL_load_OGL_texture(pFileName,0,0,0);
 
 	//library_geometries
 	tinyxml2::XMLElement* pLibraryGeometries = pRoot->FirstChildElement("library_geometries");
@@ -31,7 +31,7 @@ ColladaModel::ColladaModel(char* fileName)
 	tinyxml2::XMLElement* pVenomUV = pSource->NextSibling()->NextSibling()->FirstChildElement("float_array");
 	parseXMLFloatArray(pVenomUV, m_texCoords);
 
-	tinyxml2::XMLElement* pTriangles = pRoot->FirstChildElement("triangles")->FirstChildElement("input")->FirstChildElement("p");
+	tinyxml2::XMLElement* pTriangles = pMesh->FirstChildElement("triangles")->FirstChildElement("p");
 	parseXMLIntArray(pTriangles,m_index);
 
 }
@@ -43,18 +43,19 @@ ColladaModel::~ColladaModel()
 
 void ColladaModel::draw()
 {
+	glPushMatrix();
 	glBegin(GL_TRIANGLES);
-	for (int j = 0; j <= m_positions.size(); j = j + 3)
+	int index = 0;
+	for (int i = 0; i < m_index.size(); i++)
 	{
-		for (int i = 0; i <= m_index.size(); i++)
-		{
-		
-		
-			glVertex3f(m_positions[j], m_positions[j+1], m_positions[j+2]);
-		}
+		index= m_index[i];
+		glNormal3f(m_normals[index*3], m_normals[index*3 + 1], m_normals[index*3 + 2]);
+		glTexCoord2f(m_texCoords[index *2], m_texCoords[index *2 + 1]);
+		glVertex3f(m_positions[index *3], m_positions[index *3 +1], m_positions[index *3 + 2]);
 
 	}
 	glEnd();
+	glPopMatrix();
 }
 
 
