@@ -14,7 +14,7 @@ ColladaModel::ColladaModel(char* fileName)
 	tinyxml2::XMLElement* pLibraryImages = pRoot->FirstChildElement("library_images");
 	tinyxml2::XMLElement* pImage = pLibraryImages->FirstChildElement("image");
 	tinyxml2::XMLElement* pInitFrom = pImage->FirstChildElement("init_from");
-	const char* pFileName = (char*)pInitFrom->GetText()[8];
+	const char* pFileName = &(pInitFrom->GetText()[8]);
 	modelo = strdup(pFileName);
 	
 
@@ -45,7 +45,7 @@ ColladaModel::~ColladaModel()
 void ColladaModel::draw()
 {
 	glPushMatrix();
-	
+	glRotated(-75, 1, 0, 0);
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glBindTexture(GL_TEXTURE_2D, textureId);
