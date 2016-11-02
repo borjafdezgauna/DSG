@@ -6,6 +6,7 @@
 #include "Mouse.h"
 #include "Cube.h"
 #include "../../Simple OpenGL Image Library/src/SOIL.h"
+#include "ColladaModel.h"
 #pragma comment (lib,"../../Debug/SOIL.lib")
 
 
@@ -117,10 +118,11 @@ int main(int argc, char** argv)
 	identi = SOIL_load_OGL_texture("C:/Users/Eneko/Source/Repos/DSG/labs/eneko/texturas_papel10.jpg", 0, 0, 0);
 	identi2 = SOIL_load_OGL_texture("C:/Users/Eneko/Source/Repos/DSG/labs/eneko/text.png", 0, 0, 0);
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
-	
-	//callback functions
-	glutDisplayFunc(DrawScene);
-	glutReshapeFunc(Reshape);
+	ColladaModel c1("../../labs/eneko/EM208_heavy.dae");
+	c1.draw();
+	/*callback functions*/
+	/*glutDisplayFunc(DrawScene);
+	glutReshapeFunc(Reshape);*/
 	glutKeyboardFunc(Keyboard);
 	glutKeyboardUpFunc(pressKeyboard);
 	glutMouseFunc(pulsMouse);
