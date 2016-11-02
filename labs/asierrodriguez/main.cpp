@@ -110,10 +110,11 @@ int main(int argc, char** argv)
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 	g_cubo1.generateTexture("C:/Users/asier/Source/Reposs/DSG/labs/asierrodriguez/km.png");
+	
 	//g_cubo2.generateTexture("C:/Users/asier/Source/Reposs/DSG/labs/asierrodriguez/km2.png");
 	// iluminacion
 	GLfloat light_specularn[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 4.0 };
 	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
 	
 
@@ -131,6 +132,7 @@ int main(int argc, char** argv)
 	
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	colla.setTexture();
 
 	//callback functions
 	glutDisplayFunc(DrawScene);

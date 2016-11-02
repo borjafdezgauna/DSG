@@ -132,6 +132,6 @@ void Cube::setColor(double color1, double color2, double color3)
 void Cube::generateTexture(char *filename) {
 	unsigned int x = SOIL_load_OGL_texture(filename, 0, 0, 0);
 	idText = x;
-	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_BLEND);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	//glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_BLEND);
+	//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 }
