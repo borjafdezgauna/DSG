@@ -23,43 +23,65 @@ void Cube::draw()
 	glRotated(yaw, 0, 1, 0);
 	glRotated(pitch, 1, 0, 0);
 	glRotated(roll, 0, 0, 1);
-	glColor3d(red, green, blue);
+	//glColor3d(red, green, blue);
 	glScaled(scaleX, scaleY, scaleZ);
+
+	GLfloat mat_ambient[] = { red,green,blue,1.0 };
+	GLfloat mat_diffuse[] = { red,green,blue,1.0 };
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
 
 	//dibujar el cubo
 	glBegin(GL_QUADS);
 
+	//textura seleccionador
+	glBindTexture(GL_TEXTURE_2D, textura);
+
 	//cara alante
+	//glTexCoord3f
+	glNormal3f(0, 0, 1);  //normal de la luz
+	glTexCoord2f(1.0, 0.0);  // punto para la textura
 	glVertex3f(-0.5, 0.5, 0.5);
-	glVertex3f(0.5, 0.5, 0.5);
-	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 0.0);
 	glVertex3f(-0.5, -0.5, 0.5);
+	glTexCoord2f(0.0, 1.0);
+	glVertex3f(0.5, -0.5, 0.5);
+	glTexCoord2f(1.0, 1.0);
+	glVertex3f(0.5, 0.5, 0.5);
+	
 
 	//cara arriba
+	glNormal3f(0, 1, 0);
 	glVertex3f(-0.5, 0.5, 0.5);
 	glVertex3f(0.5, 0.5, 0.5);
 	glVertex3f(0.5, 0.5, -0.5);
 	glVertex3f(-0.5, 0.5, -0.5);
 
 	//cara atras
+	glNormal3f(0, 0, -1);
 	glVertex3f(-0.5, 0.5, -0.5);
 	glVertex3f(0.5, 0.5, -0.5);
 	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(-0.5, -0.5, -0.5);
 
 	//cara abajo
+	glNormal3f(0, -1, 0);
 	glVertex3f(-0.5, -0.5, -0.5);
 	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(0.5, -0.5, 0.5);
 	glVertex3f(-0.5, -0.5, 0.5);
 
 	//cara derecha
+	glNormal3f(1, 0, 0);
 	glVertex3f(0.5, 0.5, 0.5);
-	glVertex3f(0.5, 0.5, -0.5);
-	glVertex3f(0.5, -0.5, -0.5);
 	glVertex3f(0.5, -0.5, 0.5);
+	glVertex3f(0.5, -0.5, -0.5);
+	glVertex3f(0.5, 0.5, -0.5);
+	
+	
 
 	//cara izquierda
+	glNormal3f(-1, 0, 0);
 	glVertex3f(-0.5, 0.5, 0.5);
 	glVertex3f(-0.5, 0.5, -0.5);
 	glVertex3f(-0.5, -0.5, -0.5);
@@ -97,6 +119,12 @@ void Cube::setColor(double red, double green, double blue)
 	Cube::red = red;
 	Cube::green = green;
 	Cube::blue = blue;
+}
+
+void Cube::setTexture(char * file)
+{
+	Cube::textura = SOIL_load_OGL_texture(file, 0, 0, 0);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
 }
 
 

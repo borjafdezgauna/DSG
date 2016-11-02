@@ -52,6 +52,8 @@ void Set3DView()
 	glRotatef(-g_yaw, 0.0, 1.0, 0.0);
 	glRotatef(-g_pitch, 1.0, 0.0, 0.0);	
 	glTranslatef(-g_x, -g_y, -g_z);
+	GLfloat light_position[] = { -1.0,-1.0,-1.0,0.0 };
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 }
 
 
@@ -69,8 +71,10 @@ void DrawScene(void)
 {	
 	g_cubo1.setPosition(0.0, 0.0, 0.0);
 	g_cubo1.setColor(1.0, 0.0, 0.0);
+	g_cubo1.setTexture("C:/Users/Adrián/Source/Repos/DSG/labs/Adrian/text_1.jpg");
 	g_cubo2.setPosition(5.0, 0.0, 0.0);
 	g_cubo2.setColor(0.0, 0.0, 1.0);
+	g_cubo2.setTexture("C:/Users/Adrián/Source/Repos/DSG/labs/Adrian/text_2.jpg");
 	//clean the backbuffer
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -79,6 +83,7 @@ void DrawScene(void)
 
 	//draw the cube
 	//DrawCube();
+	
 	
 	g_cubo1.draw();
 	g_cubo2.draw();
@@ -104,12 +109,16 @@ int main(int argc, char** argv)
 	//init window and OpenGL context
 	glutInit(&argc, argv);
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize (1024, 768); 
+	glutInitWindowSize (1024, 768);
 	glutCreateWindow (argv[0]);
 	//glutFullScreen();
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV, GL_BLEND);
+	glTexParameterf(GL_TEXTURE_ENV, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 	//callback functions
 	glutDisplayFunc(DrawScene);
@@ -138,11 +147,13 @@ int main(int argc, char** argv)
 		GLfloat light_ambient[] = { 0.0,0.0,0.0,1.0 };
 		GLfloat light_diffuse[] = { 1.0,1.0,1.0,1.0 };
 		GLfloat light_specular[] = { 1.0,1.0,1.0,1.0 };
-		GLfloat light_position[] = { 1.0,1.0,1.0,0.0 };
+		
+		//GLfloat light_spot_direction[] = { 0.0,0.0,-1.0 };
 		glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
 		glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 		glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-		glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+		
+		//glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, light_spot_direction);
 		//glutSetKeyRepeat(false);
 
 		//RENDER////////////////////

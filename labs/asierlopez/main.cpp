@@ -7,6 +7,9 @@
 #include "TimeCounter.h"
 #include "Cube.h"
 
+#include "../../Simple OpenGL Image Library/src/SOIL.h"
+#pragma comment (lib,"../../Debug/SOIL.lib")
+
 float g_x=0.0f;
 float g_y=0.0f;
 float g_z=10.0f;
@@ -85,10 +88,41 @@ int main(int argc, char** argv)
 	glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);
 
+	//culling
+	glCullFace(GL_BACK);
+	glEnable(GL_CULL_FACE);
+
+
+	
+
+	//Luces
+	GLfloat light_ambient[] = { 0.0,1.0,0.0,1.0 };
+	GLfloat light_diffuse[] = { 1.0,1.0,1.0,1.0 };
+	GLfloat light_specular[] = { 1.0,1.0,1.0,1.0 };
+	GLfloat light_position[] = { -1.0, -1.0, -1.0, 0.0 };
+
+	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+
+
+
+	//Propiedades del cubo
 	cubo2.setPosition(3, 3, 3);
 	cubo1.setColor(1, 0, 0);
 	cubo2.setColor(0, 1, 1);
 	cubo2.setScale(2, 2, 2);
+
+	//Texuras 2D
+	glEnable(GL_TEXTURE_2D);
+	cubo1.setTexture("C:/Users/asier/Source/Repos/DSG/labs/asierlopez/textura2.png");
+
+
+
+
 
 	double g_cubeAngle = 0;
 
@@ -105,7 +139,7 @@ int main(int argc, char** argv)
 		////////////////////////////
 		//"move" the cube
 		g_cubeAngle += 0.1;
-		cubo1.setRotation(g_cubeAngle, g_cubeAngle, 0);
+		cubo1.setRotation(g_cubeAngle, 0, 0);
 		//queued events?
 		glutMainLoopEvent();
 

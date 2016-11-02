@@ -16,6 +16,12 @@
 **/[Rr]elease/
 [Rr]eleases/
 
+private/
+**/SOIL.tlog/
+*.tlog
+*.idb
+*.lastbuildstate
+
 x64/
 x86/
 build/
@@ -24,8 +30,6 @@ bld/
 
 [Oo]bj/
 [Ii]pch/
-logs/
-/data/
 
 # Roslyn cache directories
 *.ide/
@@ -68,7 +72,7 @@ dlldata.c
 *.pidb
 *.svclog
 *.scc
-
+!**/tinyxml2.vcxproj
 # Chutzpah Test files
 _Chutzpah*
 
@@ -248,3 +252,27 @@ $RECYCLE.BIN/
 /OpenGL-base/Debug
 /OpenGL-shaders/Debug
 /2013/JuegoDSG/Debug/vc140.idb
+/tinyxml2/tinyxml2/tinyxml2.xcodeproj/project.pbxproj
+/tinyxml2/tinyxml2/tinyxml2.xcodeproj
+/tinyxml2/tinyxml2/tinyxml2-cbp/tinyxml2-cbp.cbp
+/tinyxml2/tinyxml2/tinyxml2-cbp/README
+/tinyxml2/tinyxml2/tinyxml2-cbp
+/tinyxml2/tinyxml2
+/tinyxml2/resources/utf8testverify.xml
+/tinyxml2/resources/utf8test.xml
+/tinyxml2/resources/empty.xml
+/tinyxml2/resources/dream.xml
+/tinyxml2/resources
+/tinyxml2/contrib/html5-printer.cpp
+/tinyxml2/xmltest.cpp
+/tinyxml2/TinyXML2_small.png
+/tinyxml2/tinyxml2.pc.in
+/tinyxml2/setversion.py
+/tinyxml2/readme.md
+/tinyxml2/Makefile
+/tinyxml2/dox
+/tinyxml2/cmake_uninstall.cmake.in
+/tinyxml2/CMakeLists.txt
+/tinyxml2/biicode.conf
+/tinyxml2/appveyor.yml
+/tinyxml2/.travis.yml
