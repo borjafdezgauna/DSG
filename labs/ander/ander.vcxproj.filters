@@ -16,6 +16,7 @@
     <ClCompile Include="Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ColladaModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -33,6 +34,7 @@
     <ClInclude Include="Cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ColladaModel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

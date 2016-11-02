@@ -94,9 +94,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="EM208_heavy.dae" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ColladaModel.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="mouse.h" />
@@ -105,6 +107,7 @@
     <ClInclude Include="TimeCounter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ColladaModel.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
@@ -113,6 +116,7 @@
     <ClCompile Include="TimeCounter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="EM208_heavy_D.tga" />
     <Image Include="textura.jpg" />
     <Image Include="textura2.png" />
   </ItemGroup>
