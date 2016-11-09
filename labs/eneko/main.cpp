@@ -151,7 +151,7 @@ int main(int argc, char** argv)
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		else
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		if (control1 % 2 != 0) {
+		if (control1 % 2 == 0) {
 			glEnable(GL_CULL_FACE);
 			glCullFace(GL_BACK);
 			glDisable(GL_DEPTH_TEST);
