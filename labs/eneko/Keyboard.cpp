@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "keyboard.h"
-#define MOVE_STEP .01
-#define ANGLE_STEP 0.1
+#define MOVE_STEP .8
+#define ANGLE_STEP 1.5
 #define PI 3.1416f
 bool pulsado1;
 bool pulsado2;

@@ -8,12 +8,13 @@ ColladaModel::ColladaModel(char* cargaDae)
 	doc.LoadFile(cargaDae);
 	tinyxml2::XMLElement* pRoot = doc.FirstChildElement("COLLADA");
 	//Imagen del .dae
-	//tinyxml2::XMLElement* pLibraryImages = pRoot->FirstChildElement("library_images");
-	//&(pLibraryImages[8]);
-	//tinyxml2::XMLElement* pImage = pLibraryImages->FirstChildElement("image");
-	//tinyxml2::XMLElement* pInitFrom = pImage->FirstChildElement("init_from");
-	//const char* rImage = pInitFrom->GetText();
-	//&(rImage[8]);
+	tinyxml2::XMLElement* pLibraryImages = pRoot->FirstChildElement("library_images");
+	&(pLibraryImages[8]);
+	tinyxml2::XMLElement* pImage = pLibraryImages->FirstChildElement("image");
+	tinyxml2::XMLElement* pInitFrom = pImage->FirstChildElement("init_from");
+	const char* rImage = pInitFrom->GetText();
+	
+	&(rImage[8]);
 	//Geometria del .dae
 	tinyxml2::XMLElement* pLibraryGeometries = pRoot->FirstChildElement("library_geometries");
 	tinyxml2::XMLElement* pGeometry = pLibraryGeometries->FirstChildElement("geometry");
@@ -38,17 +39,25 @@ void ColladaModel::draw()
 	m_normals;
 	m_positions;
 	m_textCoords;
-	glMatrixMode(GL_MODELVIEW);
+	
 	glPushMatrix();
 	glRotated(-75, 1, 0, 0);
+	glTranslated(mx,my,mz);
+	glBindTexture(GL_TEXTURE_2D, id);
 	glBegin(GL_TRIANGLES);
-	glColor3b(1,0,0);
+	GLfloat mat_ambient[] = { 1,1,1,1.0 };
+	GLfloat mat_diffuse[] = { 1,1,1,1.0 };
+	GLfloat mat_especular[] = { 0,0,0,0 };
+	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_especular);
+
 	int tamaño = m_indices.size();
 	int j = 0;
 	for (int i = 0; i < tamaño; i++) {
 		j = m_indices[i];
 		glNormal3f(m_normals[3*j], m_normals[3*j + 1], m_normals[3*j + 2]);	
-		glTexCoord2f(m_textCoords[2*j], m_textCoords[2*j + 1]);
+		glTexCoord2f(m_textCoords[2*j], 1-m_textCoords[2*j + 1]);
 		glVertex3f(m_positions[3 * j], m_positions[3 * j + 1], m_positions[3 * j + 2]);
 	}
 
@@ -81,3 +90,13 @@ void ColladaModel::parseXMLIntArray(tinyxml2::XMLElement *pFloatArray, std::vect
 	}
 }
 
+void ColladaModel::setIdenti(int ida)
+{
+	id = ida;
+}
+void ColladaModel::setPosition(double x, double y, double z)
+{
+	mx = x;
+	my = y;
+	mz = z;
+}
