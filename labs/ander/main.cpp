@@ -20,6 +20,7 @@ float g_cubeAngle= 0.f;
 
 //declaramos instancias de cubo
 Cube g_cubo1, g_cubo2;
+ColladaModel venom("Venom.dae");
 
 
 void Set3DView()
@@ -37,6 +38,7 @@ void Set3DView()
 	glRotatef(-g_yaw, 0.0, 1.0, 0.0);
 	glRotatef(-g_pitch, 1.0, 0.0, 0.0);	
 	glTranslatef(-g_x, -g_y, -g_z);
+
 		
 }
 
@@ -65,7 +67,10 @@ void DrawScene(void)
 	//draw the cube
 	g_cubo1.draw();
 	g_cubo2.draw();
+	venom.draw();
 
+	
+	
 }
 
 void Reshape (int w, int h)
@@ -81,7 +86,7 @@ void Reshape (int w, int h)
 
 int main(int argc, char** argv)
 {
-	ColladaModel m("Venom.dae");
+	
 
 	g_cubo1.setPosition(0.0, 0.5, -1.0);
 	g_cubo1.setScale(0.5, 0.5, 0.5);
@@ -110,6 +115,8 @@ int main(int argc, char** argv)
 	// CON FRONT quitamos la cara delantera, con back las traseras y con front and back no vemos nada xd
 	glEnable(GL_CULL_FACE);
 
+	
+
 
 	//ILUMINACION
 	GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
@@ -123,6 +130,10 @@ int main(int argc, char** argv)
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
+	//PRUEBAS CON TEXTURAS VENOM
+	glEnable(GL_TEXTURE_2D);
+
+	venom.cargarTextura();
 
 	//callback functions
 	glutDisplayFunc(DrawScene);

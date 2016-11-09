@@ -4,7 +4,7 @@
 #include "../../tinyxml2/tinyxml2.h"
 class ColladaModel
 {
-	char* modelo;
+	
 	std::vector<double> m_positions;
 	std::vector<double> m_normals;
 	std::vector<double> m_texCoords;
@@ -15,6 +15,8 @@ public:
 	ColladaModel(char* fileName);
 	~ColladaModel();
 	void draw();
+
+	void cargarTextura();
 	
 	void parseXMLFloatArray(tinyxml2::XMLElement * pFloatArray, std::vector<double>& vector);
 	void parseXMLIntArray(tinyxml2::XMLElement * pFloatArray, std::vector<int>& vector);

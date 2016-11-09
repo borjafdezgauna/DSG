@@ -16,6 +16,7 @@ class ColladaModel
 public:
 	ColladaModel(char *filename);
 	virtual ~ColladaModel();
+	void setTexture();
 	void draw();
 
 private:
