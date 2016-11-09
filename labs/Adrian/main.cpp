@@ -5,6 +5,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Cube.h"
+#include "ColladaModel.h"
 
 #define MOVE_STEP .4
 #define ANGLE_STEP 0.2
@@ -20,6 +21,7 @@ int g_w;
 int g_h;
 float g_cubeAngle= 0.f;
 Cube g_cubo1, g_cubo2;
+ColladaModel cm("EM208_heavy.dae");
 
 
 
@@ -69,12 +71,12 @@ void Set3DView()
 
 void DrawScene(void)
 {	
-	g_cubo1.setPosition(0.0, 0.0, 0.0);
-	g_cubo1.setColor(1.0, 0.0, 0.0);
-	g_cubo1.setTexture("C:/Users/Adrián/Source/Repos/DSG/labs/Adrian/text_1.jpg");
-	g_cubo2.setPosition(5.0, 0.0, 0.0);
-	g_cubo2.setColor(0.0, 0.0, 1.0);
-	g_cubo2.setTexture("C:/Users/Adrián/Source/Repos/DSG/labs/Adrian/text_2.jpg");
+	//g_cubo1.setPosition(0.0, 0.0, 0.0);
+	//g_cubo1.setColor(1.0, 0.0, 0.0);
+	//g_cubo1.setTexture("C:/Users/Adrián/Source/Repos/DSG/labs/Adrian/text_1.jpg");
+	//g_cubo2.setPosition(5.0, 0.0, 0.0);
+	//g_cubo2.setColor(0.0, 0.0, 1.0);
+	//g_cubo2.setTexture("C:/Users/Adrián/Source/Repos/DSG/labs/Adrian/text_2.jpg");
 	//clean the backbuffer
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -85,8 +87,9 @@ void DrawScene(void)
 	//DrawCube();
 	
 	
-	g_cubo1.draw();
-	g_cubo2.draw();
+	//g_cubo1.draw();
+	//g_cubo2.draw();
+	cm.draw();
 
 }
 
@@ -127,6 +130,9 @@ int main(int argc, char** argv)
 	glutKeyboardUpFunc(Keyboard_up);
 	glutMouseFunc(MouseW);
 	glutMotionFunc(MouseMotionW);
+
+	cm.setIdTexture();
+	
 
 	while (1)
 	{

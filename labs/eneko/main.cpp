@@ -25,7 +25,7 @@ float g_cubeAngle= 0.f;
 Cube g_cubo1, g_cubo2;
 unsigned int identi;
 unsigned int identi2;
-
+unsigned int identi3;
 
 
 void Set3DView()
@@ -42,7 +42,7 @@ void Set3DView()
 	glRotatef(-g_yaw, 0.0, 1.0, 0.0);
 	glRotatef(-g_pitch, 1.0, 0.0, 0.0);	
 	glTranslatef(-g_x, -g_y, -g_z);
-	GLfloat light_position[] = { -1.0,-1.0,-1.0,0.0 };
+	GLfloat light_position[] = { 1.0,0,1.0,0.0 };
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 }
 
@@ -69,18 +69,24 @@ void DrawScene(void)
 	
 	
 	//draw the cube
-	g_cubo1.setPosition(-0.8, 0.8, 0.8);
-	g_cubo1.setColor(1,1,1);
-	g_cubo1.setScale(0.5, 0.5, 0.5);
-	g_cubo1.setIdenti(identi);
-	g_cubo1.draw();
-	g_cubo2.setPosition(0.0, 0.0, 0.0);
-	g_cubo2.setColor(1,1 ,1);
-	g_cubo2.setScale(0.3, 0.3, 0.3);
-	g_cubo2.setIdenti(identi2);
-	g_cubo2.draw();
-
-
+	//g_cubo1.setPosition(-0.8, 0.8, 0.8);
+	//g_cubo1.setColor(1,1,1);
+	//g_cubo1.setScale(0.5, 0.5, 0.5);
+	//g_cubo1.setIdenti(identi);
+	//g_cubo1.draw();
+	//g_cubo2.setPosition(0.0, 0.0, 0.0);
+	//g_cubo2.setColor(1,1 ,1);
+	//g_cubo2.setScale(0.3, 0.3, 0.3);
+	//g_cubo2.setIdenti(identi2);
+	//g_cubo2.draw();
+	ColladaModel c1("../../labs/eneko/EM208_heavy.dae");
+	c1.setPosition(2,-2,-1);
+	c1.setIdenti(identi3);
+	c1.draw();
+	ColladaModel c2("../../labs/eneko/Venom.dae");
+	c2.setPosition(-2, -2, -1);
+	c2.setIdenti(identi2);
+	c2.draw();
 }
 
 void Reshape (int w, int h)
@@ -115,14 +121,15 @@ int main(int argc, char** argv)
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
 	glEnable(GL_TEXTURE_2D);
-	identi = SOIL_load_OGL_texture("C:/Users/Eneko/Source/Repos/DSG/labs/eneko/texturas_papel10.jpg", 0, 0, 0);
-	identi2 = SOIL_load_OGL_texture("C:/Users/Eneko/Source/Repos/DSG/labs/eneko/text.png", 0, 0, 0);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
-	ColladaModel c1("../../labs/eneko/EM208_heavy.dae");
-	c1.draw();
+	/*identi = SOIL_load_OGL_texture("C:/Users/Eneko/Source/Repos/DSG/labs/eneko/texturas_papel10.jpg", 0, 0, 0);
+	identi2 = SOIL_load_OGL_texture("C:/Users/Eneko/Source/Repos/DSG/labs/eneko/text.png", 0, 0, 0);*/
+	identi2 = SOIL_load_OGL_texture("C:/Users/Eneko/Source/Repos/DSG/labs/eneko/Venom_D.tga", 0, 0, 0);
+	identi3 = SOIL_load_OGL_texture("C:/Users/Eneko/Source/Repos/DSG/labs/eneko/EM208_heavy_D.tga", 0, 0, 0);
+	/*glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);*/
+
 	/*callback functions*/
-	/*glutDisplayFunc(DrawScene);
-	glutReshapeFunc(Reshape);*/
+	glutDisplayFunc(DrawScene);
+	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(Keyboard);
 	glutKeyboardUpFunc(pressKeyboard);
 	glutMouseFunc(pulsMouse);
