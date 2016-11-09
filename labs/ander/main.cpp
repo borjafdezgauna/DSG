@@ -56,10 +56,10 @@ void Set3DView()
 void DrawScene(void)
 {
 	//clean the backbuffer
-	glClear (GL_COLOR_BUFFER_BIT);
+	//glClear (GL_COLOR_BUFFER_BIT);
 
 			//NOTA: si quisieramos vaciar el front bufer tambien
-			//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//viewing transformation
 	Set3DView();
@@ -101,7 +101,8 @@ int main(int argc, char** argv)
 	////////////////////////////////
 	//init window and OpenGL context
 	glutInit(&argc, argv);
-	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
+	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB |GLUT_DEPTH);
+	glEnable(GL_DEPTH_TEST);
 	glutInitWindowSize (1024, 768); 
 	glutCreateWindow (argv[0]);
 //	glutFullScreen();
