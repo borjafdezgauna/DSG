@@ -6,6 +6,7 @@
 #include "mouse.h"
 #include "TimeCounter.h"
 #include "Cube.h"
+#include "ColladaModel.h"
 
 #include "../../Simple OpenGL Image Library/src/SOIL.h"
 #pragma comment (lib,"../../Debug/SOIL.lib")
@@ -20,7 +21,8 @@ int g_w;
 int g_h;
 
 Cube cubo1, cubo2;
-
+ColladaModel heavy("Venom.dae");
+//ColladaModel heavy("EM208_heavy.dae");
 
 void Set3DView()
 {
@@ -50,6 +52,9 @@ void DrawScene(void)
 	//draw the cube
 	cubo1.draw();
 	cubo2.draw();
+
+	//draw collada
+	heavy.draw();
 
 }
 
@@ -90,16 +95,17 @@ int main(int argc, char** argv)
 
 	//culling
 	glCullFace(GL_BACK);
-	glEnable(GL_CULL_FACE);
+	//glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
 
 
 	
 
 	//Luces
-	GLfloat light_ambient[] = { 0.0,1.0,0.0,1.0 };
+	GLfloat light_ambient[] = { 0.0,0.0,0.0,1.0 };
 	GLfloat light_diffuse[] = { 1.0,1.0,1.0,1.0 };
-	GLfloat light_specular[] = { 1.0,1.0,1.0,1.0 };
-	GLfloat light_position[] = { -1.0, -1.0, -1.0, 0.0 };
+	GLfloat light_specular[] = { 0.0,0.0,0.0,0.0 };
+	GLfloat light_position[] = { 1.0, 1.0, 1.0, 0.0 };
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
@@ -118,9 +124,11 @@ int main(int argc, char** argv)
 
 	//Texuras 2D
 	glEnable(GL_TEXTURE_2D);
+
 	cubo1.setTexture("C:/Users/asier/Source/Repos/DSG/labs/asierlopez/textura2.png");
 
-
+	//Collada
+	heavy.cargarTextura();
 
 
 

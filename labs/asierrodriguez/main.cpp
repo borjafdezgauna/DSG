@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "../../Simple OpenGL Image Library/src/SOIL.h"
 #include "Cube.h"
+#include "ColladaModel.h"
 #include "keyboard.h"
 #include "mouse.h"
 #pragma comment(lib,"../../Debug/SOIL.lib")
@@ -18,6 +19,8 @@ int g_w;
 int g_h;
 float g_cubeAngle= 0.f;
 Cube g_cubo1, g_cubo2;
+ColladaModel colla("Venom.dae");
+//ColladaModel colla("EM208_heavy.dae");
 
 void Set3DView()
 {
@@ -60,8 +63,11 @@ void DrawScene(void)
 	//DrawCube();
 
 
-	g_cubo1.draw();
-	g_cubo2.draw();
+	/*g_cubo1.draw();
+	g_cubo2.draw();*/
+
+	colla.draw();
+
 
 }
 
@@ -104,10 +110,11 @@ int main(int argc, char** argv)
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 	g_cubo1.generateTexture("C:/Users/asier/Source/Reposs/DSG/labs/asierrodriguez/km.png");
+	
 	//g_cubo2.generateTexture("C:/Users/asier/Source/Reposs/DSG/labs/asierrodriguez/km2.png");
 	// iluminacion
 	GLfloat light_specularn[] = { 1.0, 1.0, 1.0, 1.0 };
-	GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 4.0 };
 	GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
 	
 
@@ -125,6 +132,7 @@ int main(int argc, char** argv)
 	
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+	colla.setTexture();
 
 	//callback functions
 	glutDisplayFunc(DrawScene);
