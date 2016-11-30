@@ -72,7 +72,7 @@ dlldata.c
 *.pidb
 *.svclog
 *.scc
-!**/tinyxml2.vcxproj
+!Debug/tinyxml2.lib
 # Chutzpah Test files
 _Chutzpah*
 
